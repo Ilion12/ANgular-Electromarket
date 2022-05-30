@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  host: 'https://electromarket.herokuapp.com/api',
+  itemsPorPagina:10
+
 };

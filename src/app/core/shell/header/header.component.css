@@ -1,0 +1,47 @@
+header {
+  background-image: url("../../../../assets/imagenes/portada.jpg");
+  background-size: cover;
+  height: 10rem;
+  width: 100%;
+  padding: 0%;
+
+}
+
+#enlaceHome{
+  color: rgb(248, 224, 4);
+}
+
+h1 {
+  color: rgb(248, 224, 4);
+  font-size: calc(20rem +1vw);
+  font-weight: bolder;
+  font-style:oblique;
+  justify-content: center;
+  margin-top: 5%;
+  margin-left: 15%;
+  }
+
+  .row{
+    justify-items: flex-end;
+    color: black;
+    size: cover;
+    }
+
+    header{
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      padding-left:1rem;
+    }
+
+#botonAlmacenes, #botonBuscar{
+  margin: 15%;
+  color: yellow;
+  background-color: green;
+}
+
+#botonBuscar{
+  margin-left: 30%;
+}
+
+

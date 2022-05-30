@@ -1,0 +1,10 @@
+<body>
+  <div class="row" id="cabecera">
+
+    <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2">LOCALIDAD</div>
+    <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3">PRODUCTOS</div>
+  </div>
+ <div *ngFor ="let almacen of almacenes">
+    <app-almacen-item [almacen]="almacen" (almacenSeleccionado)="verDatos($event)"></app-almacen-item>
+  </div>
+</body>

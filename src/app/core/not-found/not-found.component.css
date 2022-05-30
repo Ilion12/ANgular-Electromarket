@@ -1,0 +1,29 @@
+.container-fluid{
+  text-align: center;
+  margin-top: 150px;
+}
+
+
+h1, h2 {
+  color: yellow;
+}
+
+.col{
+  justify-content: center;
+  align-items: center;
+}
+
+#iconoHome{
+  color: yellow;
+  margin-left: 20%;
+}
+
+a {
+  color: yellow;
+  font-size: 2rem;
+  margin-left: 15%;
+}
+.tele-lavadora{
+  margin-top: 2rem;
+}
+
