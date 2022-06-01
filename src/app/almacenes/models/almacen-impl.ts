@@ -12,4 +12,5 @@ export class AlmacenImpl implements Almacen{
     this.electrodomesticos = electrodomesticos
   }
 
+
 }

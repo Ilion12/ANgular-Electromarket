@@ -1,0 +1,12 @@
+#datosAlmacen{
+  margin-top:2%;
+  margin-bottom: 2%;
+  margin-left: 4%;
+  margin-right: 4%;
+  color: blue;
+
+}
+
+#datosAlmacen:hover{
+  background-color: aqua;
+}

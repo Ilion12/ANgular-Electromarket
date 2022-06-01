@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import("./almacenes/almacenes.module").then((m) => m.AlmacenesModule),
   },
   {
-  path: 'productos',
+  path: 'electrodomesticos',
   loadChildren: () => import("./productos/productos.module").then((m) => m.ProductosModule),
   },
   // {

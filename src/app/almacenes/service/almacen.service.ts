@@ -21,7 +21,7 @@ export class AlmacenService {
   getAlmacenes(): Observable<any> {
     return this.http.get<any>(this.urlEndPoint);
   }
-
+  
   extraerAlmacenes(respuestaApi: any): Almacen[] {
     const almacenes: Almacen[] = [];
     respuestaApi._embedded.almacenes.forEach((p: any) => {

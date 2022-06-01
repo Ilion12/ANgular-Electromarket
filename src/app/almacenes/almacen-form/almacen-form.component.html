@@ -1,1 +1,28 @@
-<p>almacen-form works!</p>
+<form #almacenForm="ngForm">
+  <div class="form-row py-2">
+    <div class="col-lg-4 col-md-12" id="etiquetaLocalidad">
+      <label>LOCALIDAD<sup class="text-danger">*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="almacen.localidad" placeholder="Localidad Almacén" name="alm"
+        required minlength="3" #alm="ngModel" [ngClass]="{
+          'is-invalid': alm.invalid && (alm.dirty || alm.touched),
+          'is-valid': !alm.invalid
+        }" />
+      <div class="text-danger" *ngIf="alm.invalid && (alm.dirty || alm.touched)">
+        <div *ngIf="alm.errors?.['required']">
+          Localidad obligatoria
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="form-row justify-content-between pt-5">
+    <div class="col-lg-5 col-md-12">
+      <button id="botonCrear" class="btn btn-primary" role="button" (click)="create()" routerLink='/almacenes'
+        [disabled]="!almacenForm.form.valid">
+        Crear Almacén
+      </button>
+      <button id="botonCancelar" class="btn btn-secondary" role="button" routerLink="/" routerLinkActive="router-link-active">
+      Cancelar
+    </button>
+    </div>
+  </div>
+</form>

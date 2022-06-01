@@ -8,7 +8,7 @@ const routes: Routes = [{
   component: AlmacenesComponent
 },
 {
-  path: 'formulario',
+  path: 'formulario-almacen',
   component: AlmacenFormComponent
 }];
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AlmacenImpl } from '../models/almacen-impl';
+import { AlmacenService } from '../service/almacen.service';
 
 @Component({
   selector: 'app-almacen-form',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./almacen-form.component.css']
 })
 export class AlmacenFormComponent implements OnInit {
+  almacen: AlmacenImpl = new AlmacenImpl('', '', []);
 
-  constructor() { }
+  constructor(private almacenService: AlmacenService) { }
 
   ngOnInit(): void {
+  }
+
+  create(): void {
+    this.almacenService.create(this.almacen)
   }
 
 }

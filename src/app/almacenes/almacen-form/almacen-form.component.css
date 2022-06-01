@@ -1,0 +1,14 @@
+label{
+  color:rgb(246, 246, 247);
+}
+
+
+.form-row{
+  margin-left: 35rem;
+}
+
+#botonCancelar{
+  color: white;
+  margin-left: 12rem;
+  background-color: red;
+}

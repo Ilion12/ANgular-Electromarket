@@ -3,25 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { ProductosRoutingModule } from './productos-routing.module';
 import { ProductosComponent } from './productos/productos.component';
-import { ElectrodomesticosComponent } from './electrodomesticos/electrodomesticos.component';
-import { LavadorasComponent } from './lavadoras/lavadoras.component';
-import { LavadoraComponent } from './lavadora/lavadora.component';
-import { ElectrodomesticoComponent } from './electrodomestico/electrodomestico.component';
-import { TelevisorComponent } from './televisor/televisor.component';
+import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProductoComponent } from './productos/producto/producto.component';
+import { ProductoItemComponent } from './producto-item/producto-item.component';
+
 
 
 @NgModule({
-  declarations: [
-    ProductosComponent,
-    ElectrodomesticosComponent,
-    LavadorasComponent,
-    LavadoraComponent,
-    ElectrodomesticoComponent,
-    TelevisorComponent
-  ],
+  declarations: [ProductosComponent, ProductoComponent, ProductoItemComponent],
   imports: [
     CommonModule,
-    ProductosRoutingModule
+    ProductosRoutingModule, FormsModule, FontAwesomeModule
   ]
 })
 export class ProductosModule { }

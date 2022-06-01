@@ -1,8 +1,12 @@
-<div class="row mb-2">
-  <hr class='w-100'>
-  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3"><a class="" data-toggle="modal"
-      data-target="#modalPersonaje" (click)='almacenSeleccionado.emit(almacen)'> {{almacen.localidad}}</a></div>
-  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2">{{almacen.localidad | uppercase}}</div>
+<div class="row mb-2" id="datosAlmacen">
+
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3">
+    <p>{{almacen.localidad}}</p>
+  </div>
   <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2">
-      <button class="btn btn-info" [routerLink]="['/electrodomesticos', almacen.electrodomesticos]">Productos</button>
+    <a class="" data-toggle="modal"
+    data-target="#modalAlmacen" (click)='almacenSeleccionado.emit(almacen)'>{{almacen.electrodomesticos}}
+  <button class="btn btn-info" [routerLink]="['/almacenes/:id', almacen.electrodomesticos]">Productos</button>
+    </a>
+</div>
 </div>
