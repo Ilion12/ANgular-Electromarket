@@ -9,7 +9,7 @@ import { ElectrodomesticoImpl } from '../models/electrodomestico-impl';
   styleUrls: ['./producto-item.component.css']
 })
 export class ProductoItemComponent implements OnInit {
-  @Input() producto: Electrodomestico = new ElectrodomesticoImpl('', '', '', '', '', 0);
+  @Input() producto: Electrodomestico = new ElectrodomesticoImpl();
   @Output() productoSeleccionado = new EventEmitter<Electrodomestico>();
   constructor() { }
 

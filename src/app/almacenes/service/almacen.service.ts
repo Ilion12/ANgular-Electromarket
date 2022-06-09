@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { environment } from 'src/environments/environment';
 import { Almacen } from '../models/almacen';
@@ -12,6 +12,8 @@ import { AlmacenImpl } from '../models/almacen-impl';
 export class AlmacenService {
   private host: string = environment.host;
   private urlEndPoint: string = `${this.host}almacenes`;
+  private idAlmacen: String = this.getId(this.urlEndPoint);
+  private urlProductosAlmacen = `${this.urlEndPoint}/${this.idAlmacen}/electrodomesticos`;
 
   constructor(
     private http: HttpClient,
@@ -21,7 +23,7 @@ export class AlmacenService {
   getAlmacenes(): Observable<any> {
     return this.http.get<any>(this.urlEndPoint);
   }
-  
+
   extraerAlmacenes(respuestaApi: any): Almacen[] {
     const almacenes: Almacen[] = [];
     respuestaApi._embedded.almacenes.forEach((p: any) => {
@@ -46,4 +48,30 @@ export class AlmacenService {
     return this.auxService.getItemsPorPagina(this.urlEndPoint, pagina);
   }
 
+  postProducto(almacen: AlmacenImpl){
+    this.http.post(this.urlEndPoint,almacen).subscribe();
+    alert('Se ha añadido un nuevo almacen')
+  }
+
+  delete(id: string): Observable<Almacen> {
+    return this.http
+      .delete<Almacen>(`${this.urlEndPoint}/${id}`)
+      .pipe(
+        catchError((e) => {
+          if (e.error.mensaje) {
+            console.error(e.error.mensaje);
+          }
+          return throwError(e);
+        })
+      );
+  }
+
+  getId(url:string): string {
+    let posicionFinal: number = url.lastIndexOf('/');
+    let numId: string = url.slice(posicionFinal + 1, url.length);
+    return numId;
+
+  }
+
 }
+

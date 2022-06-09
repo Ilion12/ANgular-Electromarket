@@ -2,26 +2,29 @@ import { Electrodomestico } from "./electrodomestico";
 
 export class LavadoraImpl implements Electrodomestico {
 
-  almacen: string;
-  tipoProducto!: string;
-  marca: string;
-  modelo: string;
-  calificacionEnergetica: string;
-  precio: number;
-  numeroPulgadas!: number;
-  capacidadCarga!: number;
+  almacen: string='';
+  tipoProducto: string='';
+  marca: string='';
+  modelo: string='';
+  calificacionEnergetica: string='';
+  precio: number=0;
+  capacidadCarga: number=0;
+  idProducto: string='';
+  urlProducto: string= '';
 
-  constructor(marca:string,modelo: string, calificacionEnergetica: string, capacidadCarga: number, precio: number, almacen:string){
+  constructor(almacen:string, tipoProducto: string, marca: string, modelo: string, calificacionEnergetica: string, precio: number, capacidadCarga: number, ){
+    this.almacen = almacen;
+    this.tipoProducto= tipoProducto;
     this.marca= marca;
     this.modelo= modelo;
-    this.almacen= almacen;
-    this.calificacionEnergetica=calificacionEnergetica;
-    this.capacidadCarga=capacidadCarga;
-    this.precio=precio;
-  }
+    this.calificacionEnergetica= calificacionEnergetica;
+    this.precio= precio;
 
-  getId(url: string): string {
+    this.capacidadCarga=capacidadCarga;
+  }
+  getIdProducto(url: string): string {
     url = url.slice(0, url.length - 1)
     return url.slice(url.lastIndexOf('/') + 1, url.length);
   }
+
 }

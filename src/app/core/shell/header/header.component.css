@@ -1,9 +1,7 @@
 header {
   background-image: url("../../../../assets/imagenes/portada.jpg");
   background-size: cover;
-  height: 10rem;
-  width: 100%;
-  padding: 0%;
+
 
 }
 
@@ -17,35 +15,23 @@ h1 {
   font-weight: bolder;
   font-style:oblique;
   justify-content: center;
-  margin-top: 5%;
-  margin-left: 15%;
+  text-align: center;
+  padding-top: .4rem;
   }
 
-  .row{
-    justify-items: flex-end;
-    color: black;
-    size: cover;
-    }
-
-    header{
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-      padding-left:1rem;
-    }
-
-#botonAlmacenes, #botonBuscar{
-  margin: 15%;
-  color: yellow;
+.nav-item{
+  border-style: double;
+  border-color: black;
   background-color: green;
 }
-
-.dropdown-menu{
-  background-color: rgb(63, 72, 51);
+.nav-link {
+  color: yellow;
+  font-weight: bolder;
 }
 
-#botonBuscar{
-  margin-left: 30%;
+.nav-link:hover{
+  background-color: red;
 }
+
 
 

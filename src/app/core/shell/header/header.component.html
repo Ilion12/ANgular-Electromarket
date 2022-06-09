@@ -1,25 +1,51 @@
-<header class="container-fluid">
-
-  <div class="row container-fluid">
-    <div class="col dropdown open">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="botonAlmacenes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Almacenes
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item text-warning" routerLink="almacenes">Buscar Almacen</a>
-        <a class="dropdown-item text text-warning" routerLink="almacenes/formulario-almacen">Crear Almacen</a>
+<header class="fixed-top">
+  <div class="container-fluid" id="cabecera" >
+    <div class="row">
+      <!-- Se mete una columna del tipo sm que ocupa 4 de los 12 espacios en los que se divide la fila -->
+      <div class="col-sm-4">
+        <!-- Esta clase hará que lo que contenga se oculte según las condiciones que se pongan en el estilo en el archivo CSS  -->
+        <div class="ocultar-div3">
+          <!-- Se le pone a la imagen el identificador de clase "primera" para poder definir el estilo en la hoja de estilos -->
+        </div>
+      </div>
+      <!-- Se mete una columna del tipo sm que ocupa 4 de los 12 espacios en los que se divide la fila -->
+      <div class="col-sm-4">
+        <a routerLink="">
+          <!-- Se introduce un título de nivel 1, del que luego se definirá el estilo en el archivo CSS -->
+          <h1>ELECTROMARKET</h1>
+        </a>
+      </div>
+      <!-- Se mete una columna del tipo sm que ocupa 4 de los 12 espacios en los que se divide la fila, suman ya 12 las tres columnas -->
+      <div class="col-sm-4">
+        <div class="ocultar-div3">
+        </div>
       </div>
     </div>
-    <div class="col container-fluid">
-    <a routerLink="" id = "enlaceHome">
-      <h1>ELECTROMARKET</h1>
-    </a>
-    </div>
-    <div class="col">
-      <button class="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false" id="botonBuscar">
-        Buscar Producto
-      </button>
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- Define un conjunto de enlaces de navegación, puede proporcionar enlaces tanto dentro del documento actual como fuera del mismo -->
+        <nav>
+          <!-- Este primer enlace es la segunda página de la práctica / Además se utiliza la etiqueta Ancla a, para enlazar a otras páginas /
+          La clase está definida mediante Bootstrap / La etiqueta ul define una lista desordenada /
+          Además se ha puesto el atributo target para especificar con el valor _blank que el enlace se cargue en un nuevo contexto de navegación, de normal en una nueva pestaña, aunque es configurable -->
+          <ul class="nav nav-pills nav-justified">
+            <!-- La clase indica que es uno de los item de navegación de la barra de navegación, la etiqueta que es uno de los elementos de la lista -->
+            <li class="nav-item">
+              <!-- El valor de href es una manera de poner un enlace que no lleva a ningún sitio, en este caso por estar pendiente de desarrollo dicho enlace -->
+              <a class="nav-link" routerLink="almacenes">Almacenes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="productos">Listar Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="formulario-productos">Añadir Producto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="buscar-producto">BuscarProducto</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
-
 </header>

@@ -1,12 +1,10 @@
 <div class="row mb-2" id="datosAlmacen">
 
   <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3">
-    <p>{{almacen.localidad}}</p>
+    <a class="" data-toggle="modal"
+    data-target="#modalAlmacen" (click)='almacenSeleccionado.emit(almacen)'>{{almacen.localidad}}</a>
   </div>
   <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2">
-    <a class="" data-toggle="modal"
-    data-target="#modalAlmacen" (click)='almacenSeleccionado.emit(almacen)'>{{almacen.electrodomesticos}}
   <button class="btn btn-info" [routerLink]="['/almacenes/:id', almacen.electrodomesticos]">Productos</button>
-    </a>
 </div>
 </div>

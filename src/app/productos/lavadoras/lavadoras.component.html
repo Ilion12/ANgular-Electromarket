@@ -1,0 +1,65 @@
+<main>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <h1>Listado de Lavadoras</h1>
+      <div class="d-grid gap-2" id="sumarProducto">
+        <button class="creacion btn btn-primary" type="button" routerLink="/negocios-asociados/formulario-negocios">
+          <fa-icon [icon]="plus"></fa-icon> Crear nuevo producto
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">MARCA</div>
+    <div class="col-sm-4">MODELO</div>
+    <div class="col-sm-4">C. E. </div>
+    <div class="col-sm-4">CAPACIDAD CARGA</div>
+    <div class="col-sm-4">PRECIO</div>
+    <div class="col-sm-4">ALMACEN</div>
+  </div>
+  <div *ngIf="lavadoras.length > 0; else nolavadoras">
+    <div *ngFor="let lavadora of lavadoras">
+      <app-lavadora-item [lavadora]="lavadora" (lavadoraSeleccionada)="this.verDatosLavadora($event)"></app-lavadora-item>
+    </div>
+  </div>
+  <ng-template #noLavadoras>
+    <div class="row">
+      NO EXISTEN LAVADORAS
+    </div>
+  </ng-template>
+
+<!-- Modal FARMACIAS -->
+<div class="modal fade" id="modalLavadora" tabindex="-1" role="dialog" aria-labelledby="datosLavadora" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="datosLavadora">Datos Completos Lavadora</h5>
+      </div>
+      <div class="modal-body">
+        <app-lavadora [lavadora]="lavadoraVerDatos"></app-lavadora>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PUT -->
+<div class="modal fade" id="modalPutLavadora" tabindex="-1" role="dialog" aria-labelledby="formularioLavadora" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Modificar Lavadora</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-lavadora-modificar [lavadora]="lavadoraVerDatos"></app-lavadora-modificar>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>

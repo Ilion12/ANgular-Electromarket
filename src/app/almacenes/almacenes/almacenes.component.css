@@ -1,6 +1,11 @@
 
 #general{
 
-background-color: rgb(252, 233, 209);
+  background-color:rgb(15, 131, 102);
 
+  align-items: center;
+
+}
+.col-sm-3{
+  text-align: center;
 }

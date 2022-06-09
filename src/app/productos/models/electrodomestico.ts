@@ -5,8 +5,8 @@ export interface Electrodomestico {
   modelo: string;
   calificacionEnergetica: string;
   precio: number;
-  numeroPulgadas: number;
-  capacidadCarga: number;
-  getId(url:string): string;
+  idProducto: string;
+  urlProducto: string;
+  getIdProducto(urlProducto: string): string;
 
 }

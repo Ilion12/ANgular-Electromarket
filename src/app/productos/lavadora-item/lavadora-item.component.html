@@ -1,0 +1,28 @@
+<div class="row mb-2">
+  <hr class='w-100'>
+  <div class="col-sm-4">
+    {{lavadora.marca}}
+  </div>
+  <div class="col-sm-4">
+    {{lavadora.modelo}}
+  </div>
+  <div class="col-sm-4">
+    {{lavadora.calificacionEnergetica}}
+  </div>
+  <div class="col-sm-4">
+    {{lavadora.capacidadCarga}}
+  </div>
+  <div class="col-sm-4">{{lavadora.precio}}</div>
+  <div class="col-sm-4">
+    <a class="" data-bs-toggle="modal" data-bs-target="#modalLavadora" (click)="lavadoraSeleccionada.emit(lavadora)">
+      &nbsp;<fa-icon [icon]="eye" ></fa-icon>&nbsp;
+    </a>
+    <a role="button" (click)="borrarLavadora(this.lavadora.urlProducto)" routerLink="/productos/lavadoras">
+      &nbsp;&nbsp;
+      <fa-icon [icon]="trash"></fa-icon>
+      &nbsp;
+    </a>
+    <a class="" data-bs-toggle="modal" data-bs-target="#modalPutLavadora" (click)="lavadoraSeleccionada.emit(lavadora)">
+      &nbsp;&nbsp;<fa-icon [icon]="cambio"></fa-icon>&nbsp;
+    </a>
+</div>

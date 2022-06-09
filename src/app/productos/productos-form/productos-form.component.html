@@ -1,0 +1,290 @@
+<form #productoForm="ngForm">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div class="form-row py-2">
+        <label for="tipo"
+          >Seleccione el tipo de producto<sup class="text-danger">*</sup></label
+        ><br />
+        <select
+          name="selectorFormulario"
+          id="selector"
+          class="form-select"
+          aria-label="Default select example"
+          [(ngModel)]="electrodomestico.tipoProducto"
+        >
+          <!-- <option value="0">Sin tipo</option> -->
+          <option value="farmacia" name="farmacia" ngDefaultControl>
+            Farmacia
+          </option>
+          <option name="optica" value="optica" ngDefaultControl>Optica</option>
+        </select>
+      </div>
+
+      <!-- <section *ngIf="negocio.tipoNegocio == '0'">
+        <div class="form-row py-2">
+          <label>Nombre del negocio<sup class="text-danger">*</sup></label>
+          <input type="text" class="form-control" [(ngModel)]="negocio.nombre" placeholder="Por ejemplo GAFAS, S.A." name="neg"
+            required minlength="3" maxlength="25"/>
+          <div class="invalid-feedback">Por favor, rellene este campo.</div>
+          <div class="valid-feedback">¡Perfecto! ¡Ese es un nombre válido!</div>
+        </div>
+      </section> -->
+
+      <section *ngIf="electrodomestico.tipoProducto == 'lavadora'">
+        <div class="form-row py-2">
+          <label>Marca<sup class="text-danger">*</sup></label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="lavadora.marca"
+            placeholder="Por ejemplo , Indesit"
+            name="prod"
+            required
+            maxlength="25"
+          />
+          <div class="invalid-feedback">Por favor, rellene este campo.</div>
+          <div class="valid-feedback">OK</div>
+        </div>
+        <div class="form-row py-2">
+          <label>Modelo<sup class="text-danger">*</sup></label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="lavadora.modelo"
+            placeholder="Por ejemplo, maxWash"
+            name="prod2"
+            required
+            minlength="9"
+            maxlength="9"
+            #neg2="ngModel"
+            [ngClass]="{
+              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
+              'is-valid': !neg2.invalid
+            }"
+          />
+          <div class="invalid-feedback">Por favor, rellene este campo.</div>
+          <div class="valid-feedback">OK</div>
+        </div>
+        <div class="form-row py-2">
+          <label>Calificación Energética<sup class="text-danger">*</sup></label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="lavadora.calificacionEnergetica"
+            placeholder="A"
+            name="prod3"
+            required
+            minlength="1"
+            maxlength="1"
+            #neg2="ngModel"
+            [ngClass]="{
+              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
+              'is-valid': !neg2.invalid
+            }"
+          />
+          <div class="invalid-feedback"></div>
+          <div class="valid-feedback">OK</div>
+        </div>
+        <div class="form-row py-2">
+          <label>Capacidad de Carga<sup class="text-danger">*</sup></label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="lavadora.capacidadCarga"
+            placeholder="6 kg"
+            name="prod4"
+            required
+            minlength="6"
+            maxlength="6"
+            #neg2="ngModel"
+            [ngClass]="{
+              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
+              'is-valid': !neg2.invalid
+            }"
+          />
+          <div class="invalid-feedback"></div>
+          <div class="valid-feedback">OK</div>
+        </div>
+        <div class="form-row py-2">
+          <label>Precio<sup class="text-danger">*</sup></label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="lavadora.precio"
+            placeholder="239 €"
+            name="prod5"
+            required
+            minlength="3"
+            maxlength="10"
+            #neg2="ngModel"
+            [ngClass]="{
+              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
+              'is-valid': !neg2.invalid
+            }"
+          />
+          <div class="invalid-feedback"></div>
+          <div class="valid-feedback">OK</div>
+        </div>
+        <div class="form-row py-2">
+          <label>Seleccione el almacen<sup class="text-danger">*</sup></label
+          ><br />
+          <!-- [(ngModel)]="negocio.asociacion" METERLO EN LA ETIQUETA select -->
+          <select
+            name="selectorFormulario"
+            id="selectorAlmacen"
+            class="form-select"
+            aria-label="Default select example"
+            [(ngModel)]="electrodomestico.almacen"
+          >
+            <!-- <option
+              *ngFor="let almacen of almacenes"
+              value="{{ almacenes.urlAlmacen }}"
+            >
+              {{ almacen.localidad }}
+            </option> -->
+          </select>
+        </div>
+
+        <div class="form-row justify-content-between pt-5">
+          <button
+            class="btn btn-primary"
+            role="button"
+            (click)="crearLavadora()"
+            routerLink="/productos/lavadoras"
+            [disabled]="!productoForm.form.valid"
+          >
+            Crear lavadora
+          </button>
+        </div>
+      </section>
+
+      <section *ngIf="electrodomestico.tipoProducto == 'televisor'">
+        <div class="form-row py-2">
+          <label>Marca<sup class="text-danger">*</sup></label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="televisor.marca"
+            placeholder="Por ejemplo , LG"
+            name="prod"
+            required
+            maxlength="25"
+          />
+          <div class="invalid-feedback">Por favor, rellene este campo.</div>
+          <div class="valid-feedback">OK</div>
+        </div>
+        <div class="form-row py-2">
+          <label>Modelo<sup class="text-danger">*</sup></label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="televisor.modelo"
+            placeholder="Por ejemplo, vision2000"
+            name="prod2"
+            required
+            minlength="9"
+            maxlength="9"
+            #neg2="ngModel"
+            [ngClass]="{
+              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
+              'is-valid': !neg2.invalid
+            }"
+          />
+          <div class="invalid-feedback">Por favor, rellene este campo.</div>
+          <div class="valid-feedback">OK</div>
+        </div>
+        <div class="form-row py-2">
+          <label>Calificación Energética<sup class="text-danger">*</sup></label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="televisor.calificacionEnergetica"
+            placeholder="A"
+            name="prod3"
+            required
+            minlength="1"
+            maxlength="1"
+            #neg2="ngModel"
+            [ngClass]="{
+              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
+              'is-valid': !neg2.invalid
+            }"
+          />
+          <div class="invalid-feedback"></div>
+          <div class="valid-feedback">OK</div>
+        </div>
+        <div class="form-row py-2">
+          <label>Tamaño de la Pantalla<sup class="text-danger">*</sup></label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="televisor.numeroPulgadas"
+            placeholder='49"'
+            name="prod4"
+            required
+            minlength="2"
+            maxlength="6"
+            #neg2="ngModel"
+            [ngClass]="{
+              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
+              'is-valid': !neg2.invalid
+            }"
+          />
+          <div class="invalid-feedback"></div>
+          <div class="valid-feedback">OK</div>
+        </div>
+        <div class="form-row py-2">
+          <label>Precio<sup class="text-danger">*</sup></label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="televisor.precio"
+            placeholder="239 €"
+            name="prod5"
+            required
+            minlength="3"
+            maxlength="10"
+            #neg2="ngModel"
+            [ngClass]="{
+              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
+              'is-valid': !neg2.invalid
+            }"
+          />
+          <div class="invalid-feedback"></div>
+          <div class="valid-feedback">OK</div>
+        </div>
+        <div class="form-row py-2">
+          <label>Seleccione el almacen<sup class="text-danger">*</sup></label
+          ><br />
+          <!-- [(ngModel)]="negocio.asociacion" METERLO EN LA ETIQUETA select -->
+          <select
+            name="selectorFormulario"
+            id="selectorAlmacen"
+            class="form-select"
+            aria-label="Default select example"
+            [(ngModel)]="electrodomestico.almacen"
+          >
+            <!-- <option
+              *ngFor="let almacen of almacenes"
+              value="{{ almacenes.urlAlmacen }}"
+            >
+              {{ almacen.localidad }}
+            </option> -->
+          </select>
+        </div>
+        <div class="form-row justify-content-between pt-5">
+          <button
+            class="btn btn-primary"
+            role="button"
+            (click)="crearTelevisor()"
+            routerLink="/productos/televisores"
+            [disabled]="!productoForm.form.valid"
+          >
+            Crear Televisor
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+</form>

@@ -8,6 +8,7 @@ import { AlmacenItemComponent } from './almacen-item/almacen-item.component';
 import { AlmacenFormComponent } from './almacen-form/almacen-form.component';
 import { AuxiliarService } from '../service/auxiliar.service';
 import { FormsModule } from '@angular/forms';
+import { BusquedaFormComponent } from './busqueda-form/busqueda-form.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     AlmacenesComponent,
     AlmacenComponent,
     AlmacenItemComponent,
-    AlmacenFormComponent
+    AlmacenFormComponent,
+    BusquedaFormComponent
   ],
   imports: [
     CommonModule,

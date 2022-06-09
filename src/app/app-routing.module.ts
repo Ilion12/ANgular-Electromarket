@@ -12,13 +12,9 @@ const routes: Routes = [
     loadChildren: () => import("./almacenes/almacenes.module").then((m) => m.AlmacenesModule),
   },
   {
-  path: 'electrodomesticos',
+  path: 'productos',
   loadChildren: () => import("./productos/productos.module").then((m) => m.ProductosModule),
   },
-  // {
-  //   path: 'almacenes',
-  //   loadChildren: ()=> import("./almacenes/almacenes.module").then((m) => m.AlmacenesModule),
-  // },
   {
     path: "not-found",
     component: NotFoundComponent,

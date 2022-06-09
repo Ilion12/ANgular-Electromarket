@@ -3,7 +3,11 @@ import { faCirclePlus, faEye, faPencil, faTrashCan } from '@fortawesome/free-sol
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { Electrodomestico } from '../models/electrodomestico';
 import { ElectrodomesticoImpl } from '../models/electrodomestico-impl';
+import { Lavadora } from '../models/lavadora';
+import { Televisor } from '../models/televisor';
+import { LavadoraService } from '../service/lavadora.service';
 import { ProductoService } from '../service/producto.service';
+import { TelevisorService } from '../service/televisor.service';
 
 @Component({
   selector: 'app-productos',
@@ -13,33 +17,63 @@ import { ProductoService } from '../service/producto.service';
 export class ProductosComponent implements OnInit {
   productos: Electrodomestico[] = [];
   todosProductos: Electrodomestico[] = [];
+  todosTelevisores: Televisor[]=[];
+  todasLavadoras: Lavadora[]=[];
   numPaginas: number = 0;
   productoVerDatos!: Electrodomestico;
+  lavadoraVerDatos!: Lavadora;
+  televisorVerDatos!: Televisor;
+  lavadoras: Lavadora[]=[];
+  televisores: Televisor[]=[];
 
   constructor(
     private productoService: ProductoService,
+    private lavadoraService: LavadoraService,
+    private televisorService: TelevisorService,
     private auxService: AuxiliarService){}
 
   ngOnInit(): void {
-    this.productoService.getElectrodomesticos().subscribe((response) =>  {
+    this.productoService.getProductos().subscribe((response) =>  {
       this.productos = this.productoService.extraerProductos(response);
       console.log('productos = ', this.productos);
       console.log('tipo producto = ', this.productos[1] instanceof ElectrodomesticoImpl);
     });
 
     this.getTodosProductos();
+
+    // this.lavadoraService.getLavadoras().subscribe((response) =>  {
+    //   this.lavadoras = this.lavadoraService.extraerLavadoras(response);
+    // });
+    // this.getTodasLavadoras();
+
+    // this.televisorService.getTelevisores().subscribe((response) =>  {
+    //   this.televisores = this.televisoresService.extraerTelevisores(response);
+    // });
+    // this.getTodosTelevisores()
   }
 
-  verDatos(producto: Electrodomestico): void {
-    this.productoVerDatos = producto;
-  }
+  // verDatos(producto: Electrodomestico): void {
+  //   this.productoVerDatos = producto;
+  // }
+
+  // verDatosLavadoras(lavadora: Lavadora): void {
+  //   this.lavadoraVerDatos = lavadora;
+  // }
+
+  // verDatosTelevisores(televisor:Televisor):void{
+  //   this.televisorVerDatos= televisor
+  // }
 
   onProductoEliminar(producto: ElectrodomesticoImpl): void {
   this.productos = this.productos.filter(p => producto !== p)
   }
 
+  // modificarProducto(direccion: string): void {
+  //   this.productoService.patchProducto(direccion);
+  // }
+
   getTodosProductos(): void {
-    this.productoService.getElectrodomesticos().subscribe(r => {
+    this.productoService.getProductos().subscribe(r => {
       this.numPaginas = this.auxService.getPaginasResponse(r);
       for (let index = 1; index <= this.numPaginas; index++) {
         this.productoService.getProductosPagina(index)
@@ -49,7 +83,34 @@ export class ProductosComponent implements OnInit {
       }
     });
   }
-  pencil=faPencil;
+
+  // getTodosTelevisores(): void {
+  //   this.televisorService.getTelevisores().subscribe(r => {
+  //     this.numPaginas = this.auxService.getPaginasResponse(r);
+  //     for (let index = 1; index <= this.numPaginas; index++) {
+  //       this.televisorService.getTelevisorPagina(index)
+  //         .subscribe((response) => {
+  //           this.todosTelevisores.push(...this.televisorService.extraerTelevisores(response));
+  //         });
+  //     }
+  //   });
+  // }
+
+  // getTodasLavadoras(): void {
+  //   this.lavadoraService.getLavadoras().subscribe(r => {
+  //     this.numPaginas = this.auxService.getPaginasResponse(r);
+  //     for (let index = 1; index <= this.numPaginas; index++) {
+  //       this.lavadoraService.getLavadoraPagina(index)
+  //         .subscribe((response) => {
+  //           this.todasLavadoras.push(...this.lavadoraService.extraerLavadoras(response));
+  //         });
+  //     }
+  //   });
+  // }
+
+
+
+  faPencil=faPencil;
   eye=faEye;
   trash=faTrashCan;
   plus=faCirclePlus;
