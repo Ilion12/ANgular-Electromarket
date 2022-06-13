@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { Lavadora } from '../models/lavadora';
+import { LavadoraImpl } from '../models/lavadora-impl';
 import { LavadoraService } from '../service/lavadora.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class LavadorasComponent implements OnInit {
   constructor(private lavadoraService: LavadoraService,
     private auxService: AuxiliarService) { }
 
-  ngOnInit(): void {this.lavadoraService.getLavadoras().subscribe((response) =>  {
+  ngOnInit(): void {
+    this.lavadoraService.getLavadoras().subscribe((response) =>  {
     this.lavadoras = this.lavadoraService.extraerLavadoras(response);
   });
 

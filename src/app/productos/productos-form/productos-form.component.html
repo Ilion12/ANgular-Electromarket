@@ -4,20 +4,20 @@
     <div class="col-sm-6">
       <div class="form-row py-2">
         <label for="tipo"
-          >Seleccione el tipo de producto<sup class="text-danger">*</sup></label
-        ><br />
-        <select
-          name="selectorFormulario"
-          id="selector"
+          >Seleccione el tipo de producto<sup class="text-danger">*</sup>
+      </label>
+      <br/>
+        <select name="selectorFormulario" id="selector"
           class="form-select"
           aria-label="Default select example"
-          [(ngModel)]="electrodomestico.tipoProducto"
-        >
+          [(ngModel)]="producto.tipoProducto">
           <!-- <option value="0">Sin tipo</option> -->
-          <option value="farmacia" name="farmacia" ngDefaultControl>
-            Farmacia
+          <option value="lavadora" name="lavadora" ngDefaultControl>
+            Lavadora
           </option>
-          <option name="optica" value="optica" ngDefaultControl>Optica</option>
+          <option name="televisor" value="televisor" ngDefaultControl>
+            Televisor
+          </option>
         </select>
       </div>
 
@@ -31,41 +31,30 @@
         </div>
       </section> -->
 
-      <section *ngIf="electrodomestico.tipoProducto == 'lavadora'">
+      <section *ngIf="producto.tipoProducto == 'lavadora'">
+        //primera etiqueta
         <div class="form-row py-2">
           <label>Marca<sup class="text-danger">*</sup></label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="lavadora.marca"
-            placeholder="Por ejemplo , Indesit"
-            name="prod"
-            required
-            maxlength="25"
-          />
+          <input type="text" class="form-control" [(ngModel)]="lavadora.marca"
+            placeholder="Por ejemplo , Indesit" name="prod" required
+            maxlength="25"/>
           <div class="invalid-feedback">Por favor, rellene este campo.</div>
           <div class="valid-feedback">OK</div>
         </div>
+        //segunda etiqueta
         <div class="form-row py-2">
           <label>Modelo<sup class="text-danger">*</sup></label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="lavadora.modelo"
-            placeholder="Por ejemplo, maxWash"
-            name="prod2"
-            required
-            minlength="9"
-            maxlength="9"
-            #neg2="ngModel"
+          <input type="text" class="form-control" [(ngModel)]="lavadora.modelo"
+            placeholder="Por ejemplo, maxWash" name="prod2" required
+            maxlength="20" #prod2="ngModel"
             [ngClass]="{
-              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
-              'is-valid': !neg2.invalid
-            }"
-          />
+              'is-invalid': prod2.invalid && (prod2.dirty || prod2.touched),
+              'is-valid': !prod2.invalid
+            }"/>
           <div class="invalid-feedback">Por favor, rellene este campo.</div>
           <div class="valid-feedback">OK</div>
         </div>
+        //tercera etiqueta
         <div class="form-row py-2">
           <label>Calificación Energética<sup class="text-danger">*</sup></label>
           <input
@@ -77,15 +66,16 @@
             required
             minlength="1"
             maxlength="1"
-            #neg2="ngModel"
+            #prod3="ngModel"
             [ngClass]="{
-              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
-              'is-valid': !neg2.invalid
+              'is-invalid': prod3.invalid && (prod3.dirty || prod3.touched),
+              'is-valid': !prod3.invalid
             }"
           />
           <div class="invalid-feedback"></div>
           <div class="valid-feedback">OK</div>
         </div>
+        //cuarta etiqueta
         <div class="form-row py-2">
           <label>Capacidad de Carga<sup class="text-danger">*</sup></label>
           <input
@@ -97,15 +87,16 @@
             required
             minlength="6"
             maxlength="6"
-            #neg2="ngModel"
+            #prod4="ngModel"
             [ngClass]="{
-              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
-              'is-valid': !neg2.invalid
+              'is-invalid': prod4.invalid && (prod4.dirty || prod4.touched),
+              'is-valid': !prod4.invalid
             }"
           />
           <div class="invalid-feedback"></div>
           <div class="valid-feedback">OK</div>
         </div>
+        //quinta etiqueta
         <div class="form-row py-2">
           <label>Precio<sup class="text-danger">*</sup></label>
           <input
@@ -117,49 +108,43 @@
             required
             minlength="3"
             maxlength="10"
-            #neg2="ngModel"
+            #prod5="ngModel"
             [ngClass]="{
-              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
-              'is-valid': !neg2.invalid
+              'is-invalid': prod5.invalid && (prod5.dirty || prod5.touched),
+              'is-valid': !prod5.invalid
             }"
           />
           <div class="invalid-feedback"></div>
           <div class="valid-feedback">OK</div>
         </div>
+        //sexta etiqueta
         <div class="form-row py-2">
-          <label>Seleccione el almacen<sup class="text-danger">*</sup></label
-          ><br />
-          <!-- [(ngModel)]="negocio.asociacion" METERLO EN LA ETIQUETA select -->
+          <label>Seleccione el almacen<sup class="text-danger">*</sup></label><br/>
           <select
             name="selectorFormulario"
             id="selectorAlmacen"
             class="form-select"
             aria-label="Default select example"
-            [(ngModel)]="electrodomestico.almacen"
-          >
-            <!-- <option
-              *ngFor="let almacen of almacenes"
-              value="{{ almacenes.urlAlmacen }}"
-            >
-              {{ almacen.localidad }}
-            </option> -->
+            [(ngModel)]="producto.almacen">
+            <option *ngFor="let almacen of almacenes"
+              value="{{ almacen.urlAlmacen }}">
+              {{ almacen.localidad}}
+            </option>
           </select>
         </div>
 
         <div class="form-row justify-content-between pt-5">
-          <button
-            class="btn btn-primary"
+          <button class="btn btn-primary"
             role="button"
             (click)="crearLavadora()"
             routerLink="/productos/lavadoras"
-            [disabled]="!productoForm.form.valid"
-          >
+            [disabled]="!productoForm.form.valid">
             Crear lavadora
           </button>
         </div>
       </section>
 
-      <section *ngIf="electrodomestico.tipoProducto == 'televisor'">
+      <section *ngIf="producto.tipoProducto == 'televisor'">
         <div class="form-row py-2">
           <label>Marca<sup class="text-danger">*</sup></label>
           <input
@@ -185,10 +170,10 @@
             required
             minlength="9"
             maxlength="9"
-            #neg2="ngModel"
+            #prod2="ngModel"
             [ngClass]="{
-              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
-              'is-valid': !neg2.invalid
+              'is-invalid': prod2.invalid && (prod2.dirty || prod2.touched),
+              'is-valid': !prod2.invalid
             }"
           />
           <div class="invalid-feedback">Por favor, rellene este campo.</div>
@@ -205,10 +190,10 @@
             required
             minlength="1"
             maxlength="1"
-            #neg2="ngModel"
+            #prod3="ngModel"
             [ngClass]="{
-              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
-              'is-valid': !neg2.invalid
+              'is-invalid': prod3.invalid && (prod3.dirty || prod3.touched),
+              'is-valid': !prod3.invalid
             }"
           />
           <div class="invalid-feedback"></div>
@@ -225,10 +210,10 @@
             required
             minlength="2"
             maxlength="6"
-            #neg2="ngModel"
+            #prod4="ngModel"
             [ngClass]="{
-              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
-              'is-valid': !neg2.invalid
+              'is-invalid': prod4.invalid && (prod4.dirty || prod4.touched),
+              'is-valid': !prod4.invalid
             }"
           />
           <div class="invalid-feedback"></div>
@@ -245,10 +230,10 @@
             required
             minlength="3"
             maxlength="10"
-            #neg2="ngModel"
+            #prod5="ngModel"
             [ngClass]="{
-              'is-invalid': neg2.invalid && (neg2.dirty || neg2.touched),
-              'is-valid': !neg2.invalid
+              'is-invalid': prod5.invalid && (prod5.dirty || prod5.touched),
+              'is-valid': !prod5.invalid
             }"
           />
           <div class="invalid-feedback"></div>
@@ -257,20 +242,20 @@
         <div class="form-row py-2">
           <label>Seleccione el almacen<sup class="text-danger">*</sup></label
           ><br />
-          <!-- [(ngModel)]="negocio.asociacion" METERLO EN LA ETIQUETA select -->
+          <!-- [(ngModel)]="productoo.almacen" METERLO EN LA ETIQUETA select -->
           <select
             name="selectorFormulario"
             id="selectorAlmacen"
             class="form-select"
             aria-label="Default select example"
-            [(ngModel)]="electrodomestico.almacen"
+            [(ngModel)]="producto.almacen"
           >
-            <!-- <option
+            <option
               *ngFor="let almacen of almacenes"
-              value="{{ almacenes.urlAlmacen }}"
+              value="{{ almacen.urlAlmacen }}"
             >
-              {{ almacen.localidad }}
-            </option> -->
+              {{ almacen.localidad.toUpperCase }}
+            </option>
           </select>
         </div>
         <div class="form-row justify-content-between pt-5">

@@ -1,4 +1,4 @@
-<body>
+<main>
   <div *ngFor ="let almacen of almacenes" id="general">
     <app-almacen-item [almacen]="almacen" (almacenSeleccionado)="verDatos($event)"></app-almacen-item>
   </div>
@@ -15,12 +15,28 @@
         </button>
       </div>
       <div class="modal-body">
-        <app-almacen [almacen]='almacenVerDatos' (almacenEliminar)='onAlmacenEliminar($event)'></app-almacen>
-      </div>
+        <app-almacen [almacen]='almacenVerDatos' (almacenEliminar)='onAlmacenEliminar($event)'></app-almacen>       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
-</body>
+<div class="modal" id="modalPutAlmacen" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Almacen</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-almacen-modificar [almacen]="almacenVerDatos"></app-almacen-modificar>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>

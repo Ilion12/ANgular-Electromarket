@@ -2,7 +2,7 @@ import { Electrodomestico } from "./electrodomestico";
 
 export class ElectrodomesticoImpl implements Electrodomestico{
 
-  almacen: string= '';
+  almacen!: string;
   tipoProducto: string = '';
   marca: string = '';
   modelo: string = '';
@@ -10,8 +10,19 @@ export class ElectrodomesticoImpl implements Electrodomestico{
   precio: number = 0;
   idProducto: string= '';
   urlProducto: string= '';
+  numeroPulgadas:number= 0;
+  capacidadCarga:number=0;
 
-  constructor(almacen: string, tipoProducto:string, marca:string, modelo:string, calificacionEnergetica:string, precio:number, idProducto:string ){}
+  constructor(almacen: string, tipoProducto:string, marca:string, modelo:string, calificacionEnergetica:string, precio:number, numeroPulgadas: number, capacidadCarga:number ){
+    this.almacen=almacen;
+    this.tipoProducto=tipoProducto;
+    this.marca=marca;
+    this.modelo=modelo;
+    this.calificacionEnergetica=calificacionEnergetica;
+    this.precio=precio;
+    this.numeroPulgadas=numeroPulgadas;
+    this.capacidadCarga=capacidadCarga;
+  }
 
   // para hacer el delete y el patch
 

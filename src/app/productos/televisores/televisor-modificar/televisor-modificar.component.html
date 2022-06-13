@@ -1,1 +1,65 @@
-<p>televisor-modificar works!</p>
+<section id="datosTelevisor" *ngIf="[televisor]">
+  <div class="form-row py-2">
+    <label>Marca<sup class="text-danger">*</sup></label>
+    <input type="text" class="form-control" [(ngModel)]="televisor.marca" placeholder="Por ejemplo, LG"
+     name="prod"
+    required  maxlength="15"/>
+    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+    <div class="valid-feedback">Ok</div>
+  </div>
+  <div class="form-row py-2">
+    <label>Modelo<sup class="text-danger">*</sup></label>
+    <input type="text" class="form-control" [(ngModel)]="televisor.modelo"
+     placeholder="P. e., SartmWash" name="prod2"
+      required minlength="9" maxlength="9" #prod2="ngModel" [ngClass]="{
+        'is-invalid': prod2.invalid && (prod2.dirty || prod2.touched),
+        'is-valid': !prod2.invalid
+      }" />
+    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+    <div class="valid-feedback">ok</div>
+  </div>
+    <div class="form-row py-2">
+    <label>Calificación Energética<sup class="text-danger">*</sup></label>
+    <select name="selectorFormulario" id="selectorCalificaciónEnergética" class="form-select" aria-label="Default select example"
+    [(ngModel)]="televisor.calificacionEnergetica" placeholder="">
+      <option  value="A"></option>
+      <option  value="B"></option>
+      <option  value="Cº"></option>
+      <option  value="D"></option>
+      <option  value="E"></option>
+      <option  value="F"></option>
+      <option  value="G"></option>
+      <option  value="H"></option>
+    </select>
+  </div>
+  <div class="form-row py-2">
+    <label>Numero de Pulgadas<sup class="text-danger">*</sup></label>
+    <input type="number" class="form-control" [(ngModel)]="televisor.numeroPulgadas" placeholder='P.e., 65"' name="prod21"
+      required min="1" max="1" #prod21="ngModel" [ngClass]="{
+        'is-invalid': prod21.invalid && (prod21.dirty || prod21.touched),
+        'is-valid': ! prod21.invalid
+      }" />
+    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+    <div class="valid-feedback">Ok</div>
+  </div>
+  <div class="form-row py-2">
+    <label>Precio<sup class="text-danger">*</sup></label>
+    <input type="number > 0" class="form-control" [(ngModel)]="televisor.precio" placeholder="P.e., 239 €" name="prod22"
+      required min="0" max="5" #prod22="ngModel" [ngClass]="{
+        'is-invalid': prod22.invalid && (prod22.dirty || prod22.touched),
+        'is-valid': !prod22.invalid
+      }" />
+    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+    <div class="valid-feedback">Ok</div>
+  </div>
+  <div class="form-row py-2">
+    <label for="tipo">Seleccione el almacen<sup class="text-danger">*</sup></label><br>
+    <select name="selectorFormulario" id="selectorAlmacen4" class="form-select" aria-label="Default select example" [(ngModel)]="televisor.almacen" placeholder="Seleccione el almacen">
+      <option *ngFor="let almacen of almacenes" value={{almacen.urlAlmacen}}>{{almacen.localidad}}</option>
+    </select>
+  </div>
+  <br>
+  <button class="btn btn-success" data-bs-toggle="modal" (click)="modificarTelevisor(this.televisor)">Editar televisor</button>
+</section>
+
+

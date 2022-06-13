@@ -1,10 +1,26 @@
 <div class="row mb-2" id="datosAlmacen">
-
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3"></div>
   <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3">
     <a class="" data-toggle="modal"
-    data-target="#modalAlmacen" (click)='almacenSeleccionado.emit(almacen)'>{{almacen.localidad}}</a>
+    data-target="#modalAlmacen" (click)="almacenSeleccionado.emit(almacen)">{{almacen.localidad|uppercase}}</a>
   </div>
-  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2">
-  <button class="btn btn-info" [routerLink]="['/almacenes/:id', almacen.electrodomesticos]">Productos</button>
-</div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3"></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3">
+    <a class="" data-bs-toggle="modal" data-bs-target="#modalProducto" (click)="almacenSeleccionado.emit(almacen)">
+      &nbsp;<fa-icon [icon]="lupa"></fa-icon>&nbsp;
+    </a>
+    <a role="button" (click)="borrarAlmacen(this.almacen.getIdAlmacen(almacen.urlAlmacen))" routerLink="almacenes/almacenes">
+      &nbsp;&nbsp;
+      <fa-icon [icon]="trash"></fa-icon>
+      &nbsp;
+    </a>
+    <a class="" data-bs-target="#modalPutAlmacen" (click)="almacenSeleccionado.emit(almacen)">
+      &nbsp;&nbsp;<fa-icon [icon]="pencil"></fa-icon>&nbsp;
+    </a>
+    <a class="" routerLink="formulario-almacen">
+      &nbsp;&nbsp;<fa-icon [icon]="plus"></fa-icon>&nbsp;
+    </a>
+  </div>
+
+
 </div>

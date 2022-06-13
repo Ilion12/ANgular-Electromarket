@@ -1,47 +1,28 @@
-
-<section *ngIf="(producto.tipoProducto && producto.marca && producto.modelo) != null; else noExiste">
-  <div class="row mb-2">
-    <hr class='w-100'>
-    <!-- <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-1">
-    </div> -->
-    <div class="col-sm-3">
-<!--       <a class="" data-toggle="modal" data-target="#modalProducto" (click)='productoSeleccionado.emit(producto)'> {{producto.tipoProducto}}, {{producto.marca}} , {{producto.modelo}}</a>
- -->    </div>
-    <!-- <div class="col-sm-3">{{negocio.nombre}}, {{negocio.nif}}
-      <a routerLink="/negocios-asociados/formulario-negocios">
-        <fa-icon [icon]="eye"></fa-icon>
-      </a>
-      <a routerLink="/negocios-asociados/formulario-negocios">
-        <fa-icon [icon]="pencil"></fa-icon>
-      </a>
-      <a routerLink="/negocios-asociados/formulario-negocios">
-        <fa-icon [icon]="trash"></fa-icon>
-      </a>
-    </div> -->
-    <div class="col-sm-3">{{producto.tipoProducto</div>
-    <div class="col-sm-3">{{producto.marca}}
-      <a routerLink="/productos/formulario-productos">
-        <fa-icon [icon]="eye"></fa-icon>
-      </a>
-      <a routerLink="/productos/formulario-productos">
-        <fa-icon [icon]="pencil"></fa-icon>
-      </a>
-      <a routerLink="/productos/formulario-productos">
-        <fa-icon [icon]="trash"></fa-icon>
-      </a>
-    </div>
-    <div class="col-sm-3">
-<!--       <button class="btn btn-info" [routerLink]="['/almacen', producto.almacen]">Almacen</button>
- -->    </div>
-    <!--
-    <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-1">{{producto.numeroPulgadas}}</div>
-    <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-1">{{producto.capacidadCarga}}</div> -->
-<!--     <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-1">{{producto.almacen}}</div>
- -->  </div>
-</section>
-<!-- ESTO ES NUEVO y el *ngIf -->
-<ng-template #noExiste>
-  <div>
-    NO EXISTE, es una puta mierda
+<div class="row mb-2">
+  <hr class='w-100'>
+  <div class="col-sm-4">
+    {{producto.marca}},{{producto.modelo}},{{producto.calificacionEnergetica}}, {{producto.capacidadCarga}}
+    , {{producto.numeroPulgadas}}, {{producto.precio}}
   </div>
-</ng-template>
+
+  <div class="col-sm-4">
+    <a class="" data-bs-toggle="modal" data-bs-target="#modalProducto" (click)="productoSeleccionado.emit(producto)">
+      &nbsp;<fa-icon [icon]="eye"></fa-icon>&nbsp;
+    </a>
+
+    <!-- <a class="" data-bs-toggle="modal" data-bs-target="#modalModificar" (click)="productoSeleccionado.emit(producto)">
+      &nbsp;<fa-icon [icon]="modificar"></fa-icon>&nbsp;
+    </a> -->
+
+    <a class="" data-bs-toggle="modal" data-bs-target="#modalPut" (click)="productoSeleccionado.emit(producto)">
+      &nbsp;&nbsp;<fa-icon [icon]="cambio"></fa-icon>&nbsp;
+    </a>
+    <a role="button" (click)="borrarProducto(this.producto.urlProducto)"
+    routerLink="/productos/productos">
+      &nbsp;&nbsp;
+      <fa-icon [icon]="trash"></fa-icon>
+      &nbsp;
+    </a>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

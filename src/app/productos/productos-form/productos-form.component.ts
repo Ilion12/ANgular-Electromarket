@@ -17,21 +17,22 @@ import { TelevisorService } from '../service/televisor.service';
 })
 export class ProductosFormComponent implements OnInit {
 
-  electrodomestico: ElectrodomesticoImpl = new ElectrodomesticoImpl();
-  lavadora: LavadoraImpl = new LavadoraImpl('','', '','','',0,0);
-  televisor: TelevisorImpl = new TelevisorImpl('','','','','',0, 0);
+  producto: ElectrodomesticoImpl = new ElectrodomesticoImpl('','','','','',0,0,0);
+  lavadora: LavadoraImpl = new LavadoraImpl('','', '','',0,0,);
+  televisor: TelevisorImpl = new TelevisorImpl('','','','',0, 0);
   almacenes:Almacen[]=[];
   todosAlmacenes: Almacen []=[];
   numPaginas:number = 0;
 
   constructor(
-    private electrodomesticoService: ProductoService,
+    private productoService: ProductoService,
     private televisorService: TelevisorService,
     private lavadoraService: LavadoraService,
     private auxService: AuxiliarService,
     private almacenService: AlmacenService) { }
 
-  ngOnInit(): void {this.almacenService.getAlmacenes().subscribe((response) => {
+  ngOnInit(): void {
+    this.almacenService.getAlmacenes().subscribe((response) => {
     this.almacenes = this.almacenService.extraerAlmacenes(response);});
 
     this.getTodosAlmacenes();
@@ -51,9 +52,9 @@ export class ProductosFormComponent implements OnInit {
   }
 
 
-  create(): void {
+  crearProducto(): void {
     console.info('paso por metodo de formulario');
-    this.electrodomesticoService.postProducto(this.electrodomestico);
+    this.productoService.postProducto(this.producto);
   }
 
   crearLavadora(): void {

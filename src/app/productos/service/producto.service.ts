@@ -5,7 +5,9 @@ import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { environment } from 'src/environments/environment';
 import { Electrodomestico } from '../models/electrodomestico';
 import { ElectrodomesticoImpl } from '../models/electrodomestico-impl';
+import { Lavadora } from '../models/lavadora';
 import { LavadoraImpl } from '../models/lavadora-impl';
+import { Televisor } from '../models/televisor';
 import { TelevisorImpl } from '../models/televisor-impl';
 
 @Injectable({
@@ -36,8 +38,9 @@ export class ProductoService {
     return this.http.get<any>(this.urlEndPointTel);
   }
 
+
   extraerLavadoras(respuestaApi: any): Electrodomestico[] {
-    const productos: Electrodomestico[] = [];
+    const productos: (Electrodomestico[]) = [];
     respuestaApi._embedded.lavadoras.forEach((p: any) => {
       productos.push(this.mapearProducto(p));
     });
@@ -54,97 +57,54 @@ export class ProductoService {
 
   extraerProductos(respuestaApi: any): Electrodomestico[] {
     const productos: Electrodomestico[] = [];
-    respuestaApi._embedded.productos.forEach((p: any) => {
+    respuestaApi._embedded.televisores.forEach((p: any) => {
+      productos.push(this.mapearProducto(p));
+    });
+    respuestaApi._embedded.lavadoras.forEach((p: any) => {
       productos.push(this.mapearProducto(p));
     });
     return productos;
   }
 
   mapearProducto(productoApi: any): ElectrodomesticoImpl {
-    let producto= new ElectrodomesticoImpl('', '','','','',0,'');
-      producto.almacen= productoApi._links.producto.href;
+    let producto= new ElectrodomesticoImpl('', '','','','',0,0,0);
+      producto.almacen= productoApi._links.almacen.href;
       producto.calificacionEnergetica=productoApi.calificacionEnergetica;
       producto.precio= productoApi.precio;
       producto.tipoProducto=productoApi.tipoProducto;
       producto.marca= productoApi.marca;
       producto.modelo=productoApi.modelo;
       producto.urlProducto= productoApi._links.self.href;
+      producto.capacidadCarga=productoApi.capacidadCarga;
+      producto.numeroPulgadas=productoApi.numeroPulgadas;
     return producto;
     }
 
   postProducto(producto: ElectrodomesticoImpl){
-      this.http.post(this.urlEndPoint1,producto).subscribe();
+      this.http.post(this.urlEndPoint1,producto);
       alert('Se ha añadido un nuevo producto')
     }
 
-    patchProducto(direccionEliminar: string) {
+  deleteProducto(direccionEliminar: string): Observable <any>{
+      return this.http.delete(direccionEliminar);
+    }
+  update(idProducto: string, producto: ElectrodomesticoImpl): Observable<any> {
+      return this.http
+        .patch<any>(`${this.urlEndPoint1}/${idProducto}`, producto);
+      }
+
+  patchProducto(direccionEliminar: string) {
       this.http.patch(this.urlEndPoint1, direccionEliminar).subscribe();
     }
 
-    patchProducto3(producto: ElectrodomesticoImpl) {
+  patchProducto3(producto: ElectrodomesticoImpl) {
       return this.http.patch<any>(`${this.urlEndPoint1}/${producto.getIdProducto(producto.urlProducto)}`, producto);
     }
-    postLavadora(lavadora: LavadoraImpl){
-      this.http.post(this.urlEndPoint1, lavadora).subscribe();
-    }
-    postTelevisor(televisor: TelevisorImpl){
-      this.http.post(this.urlEndPoint1, televisor).subscribe();
-    }
 
-    deleteProducto(direccionEliminar: string){
-      this.http.delete(direccionEliminar).subscribe();
+  putProducto(producto: ElectrodomesticoImpl) {
+      return this.http.put<any>(`${this.urlEndPoint1}
+      /${producto.getIdProducto(producto.urlProducto)}`, producto);
     }
-
-  create(producto: ElectrodomesticoImpl): Observable<any> {
-    return this.http.post(`${this.urlEndPoint1}`, producto).pipe(catchError((e) =>{
-      if (e.status === 400) {
-      return throwError(e);
-    }
-    if (e.error.mensaje) {
-      console.error(e.error.mensaje);
-    }
-    return throwError(e);}));
-  }
-
-  delete(id: string): Observable<Electrodomestico> {
-    return this.http
-      .delete<Electrodomestico>(`${this.urlEndPoint1}/${id}`)
-      .pipe(
-        catchError((e) => {
-          if (e.error.mensaje) {
-            console.error(e.error.mensaje);
-          }
-          return throwError(e);
-        })
-      );
-  }
-  update(producto: Electrodomestico): Observable<any> {
-    return this.http
-      .put<any>(`${this.urlEndPoint1}/${producto.idProducto}`, producto)
-      .pipe(
-        catchError((e) => {
-          if (e.status === 400) {
-            return throwError(e);
-          }
-          if (e.error.mensaje) {
-            console.error(e.error.mensaje);
-          }
-          return throwError(e);
-        })
-      );
-  }
-
-  getProducto(id: string): Observable<Electrodomestico> {
-    return this.http.get<Electrodomestico>(`${this.urlEndPoint1}/${id}`).pipe(
-      catchError((e) => {
-        if (e.status !== 401 && e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(e);
-      })
-    );
-  }
-
 
   getProductosPagina(pagina: number): Observable<any> {
     return this.auxService.getItemsPorPagina(this.urlEndPoint1, pagina);
@@ -154,6 +114,6 @@ export class ProductoService {
     let posicionFinal: number = url.lastIndexOf('/');
     let numId: string = url.slice(posicionFinal + 1, url.length);
     return numId;
-
   }
+
 }

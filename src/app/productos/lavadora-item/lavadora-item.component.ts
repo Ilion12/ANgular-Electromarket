@@ -16,8 +16,11 @@ export class LavadoraItemComponent implements OnInit {
   almacenes: Almacen[] = [];
   todosAlmacenes: Almacen[] = [];
   numPaginas: number = 0;
-  @Input() lavadora: Lavadora = new LavadoraImpl('','','','','',0,0);
+
+  @Input() lavadora: Lavadora = new LavadoraImpl('','','','',0,0);
   @Output() lavadoraSeleccionada = new EventEmitter<Lavadora>();
+  @Output() almacenResultado = new EventEmitter<Almacen>();
+
   constructor(
     private lavadoraService: LavadoraService,
     private almacenService: AlmacenService,
@@ -42,17 +45,21 @@ getTodosAlmacenes(): void {
     }
   });
 }
+
+//delete
 borrarLavadora(direccion: string): void {
   this.lavadoraService.deleteLavadora(direccion);
 }
 
-modificarLavadora(lavadora: LavadoraImpl): void {
-  this.lavadoraService.patchLavadora(lavadora).subscribe();
+//patch
+modificarLavadora(idLavadora:string, lavadora: LavadoraImpl): void {
+  this.lavadoraService.patchLavadora(idLavadora,lavadora).subscribe();
 }
 
-cambiarLavadoraa(lavadora: LavadoraImpl): void {
-  this.lavadoraService.putLavadora(lavadora);
-  //.subscribe()
+// Para el MODAL
+obtenerAlmacen(){
+  // this.asociacionResultado = this.farmaciaService.getAsociacionFarmacia3(this.farmacia.asociacion);
+  return this.lavadoraService.getAlmacenLavadora2(this.lavadora.almacen);
 }
 
 pencil = faPencil;

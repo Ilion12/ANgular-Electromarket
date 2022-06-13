@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faCirclePlus, faPenNib } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus, faPencilAlt, faPenNib } from '@fortawesome/free-solid-svg-icons';
 import { Almacen } from 'src/app/almacenes/models/almacen';
 import { AlmacenService } from 'src/app/almacenes/service/almacen.service';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
@@ -17,9 +17,10 @@ export class LavadoraModificarComponent implements OnInit {
   almacenes: Almacen[] = [];
   todosAlmacenes: Almacen[] = [];
   numPaginas: number = 0;
+
   @Input() lavadora!: LavadoraImpl;
   @Input() producto!: ElectrodomesticoImpl;
-  @Output() lavadoraEliminar = new EventEmitter<LavadoraImpl>();
+
 
   constructor(
     private almacenService: AlmacenService,
@@ -45,19 +46,13 @@ this.getTodosAlmacenes();
       }
     });
   }
-  eliminar(): void {
-    this.lavadoraEliminar.emit(this.lavadora);
-  }
 
   modificarLavadora(lavadora: LavadoraImpl): void {
-    this.lavadoraService.patchLavadora(lavadora).subscribe();
+    this.lavadoraService.patchLavadora(lavadora.getIdProducto(lavadora.urlProducto), lavadora).subscribe();
   }
 
-  cambiarLavadora(lavadora: LavadoraImpl): void {
-    this.lavadoraService.putLavadora(lavadora);
-    //.subscribe()
-  }
 
+  pencil=faPencilAlt;
   plus=faCirclePlus;
   cambio=faPenNib;
 }

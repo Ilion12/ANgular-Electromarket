@@ -1,1 +1,28 @@
-<p>televisor-item works!</p>
+<section *ngIf="televisor.marca != null; else noExiste">
+
+  <div class="row mb-2">
+    <hr class='w-100'>
+    <div class="col-sm-4">
+      {{televisor.marca}},{{televisor.modelo}},{{televisor.calificacionEnergetica}},{{televisor.numeroPulgadas}}",
+      {{televisor.precio}} €</div>
+    <div class="col-sm-4">
+      <a class="" data-bs-toggle="modal" data-bs-target="#modalTelevisor" (click)="televisorSeleccionado.emit(televisor)">
+        &nbsp;<fa-icon [icon]="eye" ></fa-icon>&nbsp;
+      </a>
+      <a role="button" (click)="borrarTelevisor(this.televisor.urlProducto)" routerLink="/productos/televisores">
+        &nbsp;&nbsp;
+        <fa-icon [icon]="trash"></fa-icon>
+        &nbsp;
+      </a>
+      <a class="" data-bs-toggle="modal" data-bs-target="#modalPutTelevisor" (click)="televisorSeleccionado.emit(televisor)">
+        &nbsp;&nbsp;<fa-icon [icon]="cambio"></fa-icon>&nbsp;
+      </a>
+    </div>
+    </div>
+  </section>
+  <ng-template #noExiste>
+    <div>
+      No hay televisores
+    </div>
+  </ng-template>
+

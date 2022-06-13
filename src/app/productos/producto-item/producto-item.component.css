@@ -1,12 +1,4 @@
-:root {
-  --verdePrincipal: #062C30;
-  --verdeClaro:#05595B;
-  --amarillo: #E2D784;
-  --blanco: #F5F5F5;
-}
-
 section {
-  color: var(--amarillo);
   font-size: 1em;
 }
 
@@ -15,9 +7,9 @@ section {
 }
 
 a{
-  color: var(--amarillo);
+  color: yellow;
 }
 
 a:hover{
-  color: var(--blanco);
+  color: white;
 }

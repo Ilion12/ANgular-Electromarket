@@ -1,1 +1,71 @@
-<p>televisores works!</p>
+<main>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <h1>Listado de televisores</h1>
+      <div class="d-grid gap-2" id="sumarProducto">
+        <button class="creacion btn btn-primary" type="button" routerLink="/productos/formulario-productos">
+          <fa-icon [icon]="plus"></fa-icon> Crear nuevo producto
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">MARCA</div>
+    <div class="col-sm-4">MODELO</div>
+    <div class="col-sm-4">CAPACIDAD CARGA</div>
+    <div class="col-sm-4">PRECIO</div>
+  </div>
+  <div *ngIf="televisores.length > 0; else noTelevisores">
+    <div *ngFor="let televisor of televisores">
+      <app-televisor-item [televisor]="televisor" (televisorSeleccionado)="this.verDatosTelevisor($event)"></app-televisor-item>
+    </div>
+  </div>
+  <ng-template #noTelevisores>
+    <div class="row">
+      NO EXISTEN TELEVISORES
+    </div>
+  </ng-template>
+
+<!-- Modal Lavadoras -->
+<div class="modal fade" id="modalTelevisor" tabindex="-1" role="dialog" aria-labelledby="datosTelevisor" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="datosTelevisor">Datos Televisor</h5>
+        <button type="button" class="btn-close"
+        data-bs-dismiss="modal" aria-label="Close">
+      </button>
+      </div>
+      <div class="modal-body">
+        <app-televisor [televisor]="televisoresVerDatos"></app-televisor>
+      </div>
+      <div class="modal-footer">
+        <button type="button"
+        class="btn btn-outline-danger"
+        data-bs-dismiss="modal">
+        Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PUT -->
+<div class="modal fade" id="modalPutTelevisor" tabindex="-1" role="dialog" aria-labelledby="formularioTelevisor" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Editar Televisor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+        aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-televisor-modificar [televisor]="televisoresVerDatos"></app-televisor-modificar>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>

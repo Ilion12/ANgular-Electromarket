@@ -1,0 +1,61 @@
+<main>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <h1>Resultado Búsqueda</h1>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div class="form-row py-2">
+        <label for="tipo">Marca<sup class="text-danger">*</sup></label><br>
+
+        <label for="tipo">Numero Pulgadas<sup class="text-danger">*</sup></label><br>
+
+      </div>
+      <div class="form-row justify-content-between pt-5" id="botoncito">
+        <button class="btn btn-primary" >Buscar Producto</button>
+      </div>
+      <div class="col-sm-3"></div>
+      </div>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">LOCALIDAD</div>
+    <div class="col-sm-4"></div>
+  </div>
+  <!-- <div *ngIf="almacenes.length > 0; else noAlmacenes">
+    <div *ngFor="let almacen of almacenes">
+      <app-almacen-item [almacen]="almacen" (almacenSeleccionado)="this.verDatos($event)"></app-almacen-item>
+    </div>
+  </div>
+  <ng-template #noAlmacenes id="noExisten">
+    <div class="row">
+      <div class="col-sm-12">
+        No hay televisores de esas caracteristicas en ningún almacen
+      </div>
+    </div>
+  </ng-template> -->
+
+  <!-- MODAL LISTADO -->
+  <div class="modal fade" id="modalListado" tabindex="-1" role="dialog" aria-labelledby="productosLista" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel2">Listado de productos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- <div *ngFor="let asociacion of asociaciones"> -->
+            <!-- <app-negocios-listados [asociacion]="asociacionVerDatos"></app-negocios-listados> -->
+          <!-- </div> -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>

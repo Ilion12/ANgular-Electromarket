@@ -9,11 +9,15 @@ const routes: Routes = [
   },
   {
     path: 'almacenes',
-    loadChildren: () => import("./almacenes/almacenes.module").then((m) => m.AlmacenesModule),
+    loadChildren: () => import("./almacenes/almacenes.module").then((m) => m.AlmacenesModule)
   },
   {
   path: 'productos',
-  loadChildren: () => import("./productos/productos.module").then((m) => m.ProductosModule),
+  loadChildren: () => import("./productos/productos.module").then((m) => m.ProductosModule)
+  },
+  {
+    path:'busqueda',
+    loadChildren:()=> import("./busqueda/busqueda.module").then(m=>m.BusquedaModule)
   },
   {
     path: "not-found",

@@ -9,7 +9,6 @@ import { ProductoComponent } from './productos/producto/producto.component';
 import { ProductoItemComponent } from './producto-item/producto-item.component';
 import { ProductosFormComponent } from './productos-form/productos-form.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductoModificarComponent } from './producto-modificar/producto-modificar.component';
 import { LavadoraItemComponent } from './lavadora-item/lavadora-item.component';
 import { LavadorasComponent } from './lavadoras/lavadoras.component';
 import { LavadoraComponent } from './lavadoras/lavadora/lavadora.component';
@@ -19,6 +18,7 @@ import { TelevisorItemComponent } from './televisor-item/televisor-item.componen
 import { TelevisorModificarComponent } from './televisores/televisor-modificar/televisor-modificar.component';
 import { LavadoraModificarComponent } from './lavadoras/lavadora-modificar/lavadora-modificar.component';
 import { AuxiliarService } from '../service/auxiliar.service';
+import { AlmacenesModule } from '../almacenes/almacenes.module';
 
 
 
@@ -29,7 +29,6 @@ import { AuxiliarService } from '../service/auxiliar.service';
     ProductoComponent,
     ProductoItemComponent,
     ProductosFormComponent,
-    ProductoModificarComponent,
     LavadoraItemComponent,
     LavadorasComponent,
     LavadoraComponent,
@@ -38,12 +37,13 @@ import { AuxiliarService } from '../service/auxiliar.service';
     TelevisorItemComponent,
     TelevisorModificarComponent,
     LavadoraModificarComponent],
+
   imports: [
-    CommonModule,
-    ProductosRoutingModule,
-    FormsModule,
-    FontAwesomeModule,
-    HttpClientModule
+     CommonModule,
+     ProductosRoutingModule,
+     FormsModule,
+     FontAwesomeModule,
+     HttpClientModule
   ],
   providers: [
     AuxiliarService

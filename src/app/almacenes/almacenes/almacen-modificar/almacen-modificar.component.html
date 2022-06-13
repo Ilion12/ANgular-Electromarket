@@ -1,0 +1,10 @@
+<section id="datosAlmacen" *ngIf="[almacen]">
+  <div class="form-row py-2">
+    <label>Localidad<sup class="text-danger">*</sup></label>
+    <input type="text" class="form-control" [(ngModel)]="almacen.localidad" placeholder="" name="alm"
+    required minlength="3" maxlength="25"/>
+    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+    <div class="valid-feedback">Ok</div>
+  </div>
+</section>
+

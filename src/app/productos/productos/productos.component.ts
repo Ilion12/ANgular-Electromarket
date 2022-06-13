@@ -15,16 +15,17 @@ import { TelevisorService } from '../service/televisor.service';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
+
   productos: Electrodomestico[] = [];
+  lavadoras: Lavadora[]=[];
+  televisores: Televisor[]=[];
   todosProductos: Electrodomestico[] = [];
   todosTelevisores: Televisor[]=[];
   todasLavadoras: Lavadora[]=[];
-  numPaginas: number = 0;
   productoVerDatos!: Electrodomestico;
   lavadoraVerDatos!: Lavadora;
   televisorVerDatos!: Televisor;
-  lavadoras: Lavadora[]=[];
-  televisores: Televisor[]=[];
+  numPaginas: number = 0;
 
   constructor(
     private productoService: ProductoService,
@@ -47,48 +48,44 @@ export class ProductosComponent implements OnInit {
     // this.getTodasLavadoras();
 
     // this.televisorService.getTelevisores().subscribe((response) =>  {
-    //   this.televisores = this.televisoresService.extraerTelevisores(response);
+    //   this.televisores = this.televisorService.extraerTelevisores(response);
     // });
     // this.getTodosTelevisores()
   }
 
-  // verDatos(producto: Electrodomestico): void {
-  //   this.productoVerDatos = producto;
-  // }
-
-  // verDatosLavadoras(lavadora: Lavadora): void {
-  //   this.lavadoraVerDatos = lavadora;
-  // }
-
-  // verDatosTelevisores(televisor:Televisor):void{
-  //   this.televisorVerDatos= televisor
-  // }
-
-  onProductoEliminar(producto: ElectrodomesticoImpl): void {
-  this.productos = this.productos.filter(p => producto !== p)
+  verDatos(producto: Electrodomestico): void {
+    this.productoVerDatos = producto;
   }
 
-  // modificarProducto(direccion: string): void {
-  //   this.productoService.patchProducto(direccion);
-  // }
+  verDatosLavadoras(lavadora: Lavadora): void {
+    this.lavadoraVerDatos = lavadora;
+  }
+
+  verDatosTelevisores(televisor:Televisor):void{
+    this.televisorVerDatos= televisor
+  }
+
+  onProductoEliminar(producto: ElectrodomesticoImpl): void {
+  console.log(`Se ha eliminado el producto de la marca ${producto.marca}`)
+    this.productos = this.productos.filter(p => producto !== p)
+  }
+
+  modificarProducto(url: string): void {
+    this.productoService.patchProducto(url);
+  }
 
   getTodosProductos(): void {
     this.productoService.getProductos().subscribe(r => {
-      this.numPaginas = this.auxService.getPaginasResponse(r);
-      for (let index = 1; index <= this.numPaginas; index++) {
-        this.productoService.getProductosPagina(index)
-          .subscribe((response) => {
-            this.todosProductos.push(...this.productoService.extraerProductos(response));
+      this.todosProductos.push(...this.productoService.extraerProductos(r));
           });
       }
-    });
-  }
+
 
   // getTodosTelevisores(): void {
   //   this.televisorService.getTelevisores().subscribe(r => {
   //     this.numPaginas = this.auxService.getPaginasResponse(r);
   //     for (let index = 1; index <= this.numPaginas; index++) {
-  //       this.televisorService.getTelevisorPagina(index)
+  //       this.televisorService.getTelevisoresPagina(index)
   //         .subscribe((response) => {
   //           this.todosTelevisores.push(...this.televisorService.extraerTelevisores(response));
   //         });
@@ -100,15 +97,13 @@ export class ProductosComponent implements OnInit {
   //   this.lavadoraService.getLavadoras().subscribe(r => {
   //     this.numPaginas = this.auxService.getPaginasResponse(r);
   //     for (let index = 1; index <= this.numPaginas; index++) {
-  //       this.lavadoraService.getLavadoraPagina(index)
+  //       this.lavadoraService.getLavadorasPagina(index)
   //         .subscribe((response) => {
   //           this.todasLavadoras.push(...this.lavadoraService.extraerLavadoras(response));
   //         });
   //     }
   //   });
   // }
-
-
 
   faPencil=faPencil;
   eye=faEye;

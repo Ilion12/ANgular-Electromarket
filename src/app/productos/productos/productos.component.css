@@ -1,0 +1,11 @@
+#encabezado{
+  font-size: small;
+  color: bisque;
+}
+
+.row{
+  padding-top: 1rem;
+}
+#vacio{
+  padding-left: 3rem;
+}

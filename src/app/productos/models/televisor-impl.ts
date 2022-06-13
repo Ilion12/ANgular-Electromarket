@@ -10,17 +10,17 @@ export class TelevisorImpl  implements Televisor{
   precio: number=0;
   idProducto: string= '';
   urlProducto: string='';
+  capacidadCarga: number= 0;
 
-
-  constructor(almacen:string, tipoProducto: string, marca: string, modelo: string, calificacionEnergetica: string, precio: number,numeroPulgadas: number){
+  constructor(almacen:string, marca: string, modelo: string, calificacionEnergetica: string, precio: number,numeroPulgadas: number){
     this.numeroPulgadas= numeroPulgadas;
     this.almacen = almacen;
-    this.tipoProducto= tipoProducto;
     this.marca= marca;
     this.modelo= modelo;
     this.calificacionEnergetica= calificacionEnergetica;
     this.precio= precio;
   }
+
 
   getIdProducto(url: string): string {
     url = url.slice(0, url.length - 1)

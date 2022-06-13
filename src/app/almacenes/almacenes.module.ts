@@ -8,7 +8,8 @@ import { AlmacenItemComponent } from './almacen-item/almacen-item.component';
 import { AlmacenFormComponent } from './almacen-form/almacen-form.component';
 import { AuxiliarService } from '../service/auxiliar.service';
 import { FormsModule } from '@angular/forms';
-import { BusquedaFormComponent } from './busqueda-form/busqueda-form.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AlmacenModificarComponent } from './almacenes/almacen-modificar/almacen-modificar.component';
 
 
 @NgModule({
@@ -17,12 +18,13 @@ import { BusquedaFormComponent } from './busqueda-form/busqueda-form.component';
     AlmacenComponent,
     AlmacenItemComponent,
     AlmacenFormComponent,
-    BusquedaFormComponent
+    AlmacenModificarComponent
   ],
   imports: [
     CommonModule,
-    AlmacenesRoutingModule, FormsModule
+    AlmacenesRoutingModule, FormsModule, FontAwesomeModule,
   ],
-  providers: [AuxiliarService]
+  providers: [AuxiliarService],
+  exports:[AlmacenItemComponent]
 })
 export class AlmacenesModule { }

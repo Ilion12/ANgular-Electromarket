@@ -8,7 +8,7 @@ import { AlmacenService } from '../service/almacen.service';
   styleUrls: ['./almacen-form.component.css']
 })
 export class AlmacenFormComponent implements OnInit {
-  almacen: AlmacenImpl = new AlmacenImpl('', '', []);
+  almacen: AlmacenImpl = new AlmacenImpl('', [], '');
 
   constructor(private almacenService: AlmacenService) { }
 
@@ -16,7 +16,7 @@ export class AlmacenFormComponent implements OnInit {
   }
 
   create(): void {
-    this.almacenService.create(this.almacen)
+    this.almacenService.postAlmacen(this.almacen)
   }
 
 }

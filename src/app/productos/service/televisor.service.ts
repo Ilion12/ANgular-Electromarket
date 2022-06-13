@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Almacen } from 'src/app/almacenes/models/almacen';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { environment } from 'src/environments/environment';
 import { Televisor } from '../models/televisor';
@@ -18,18 +19,18 @@ constructor(
   private http: HttpClient,
   private auxService: AuxiliarService) { }
 
+  //get
 getTelevisores(): Observable<any> {
   return this.http.get<any>(this.urlEndPoint2);
 }
 
 mapearTelevisor(televisorApi: any): TelevisorImpl {
 
-  let televisorNuevo = new TelevisorImpl('','','','','',0,0);
+  let televisorNuevo = new TelevisorImpl('','','','',0,0);
 
   televisorNuevo.almacen=televisorApi._links.almacen.href;
   televisorNuevo.calificacionEnergetica= televisorApi.calificacionEnergetica;
   televisorNuevo.urlProducto=televisorApi._links.self.href;
-  televisorNuevo.tipoProducto= televisorApi.tipoProducto;
   televisorNuevo.marca= televisorApi.marca;
   televisorNuevo.modelo= televisorApi.modelo;
   televisorNuevo.precio= televisorApi.precio;
@@ -47,20 +48,18 @@ extraerTelevisores(respuestaApi: any): Televisor[] {
   return televisores;
 }
 
+//post
 postTelevisor(televisor: TelevisorImpl){
-  this.http.post(this.urlEndPoint2, televisor).subscribe();
+  this.http.post(this.urlEndPoint2, televisor);
 }
-
+//delete
 deleteTelevisor(direccionEliminar: string){
   this.http.delete(direccionEliminar).subscribe();
 }
 
-patchTelevisor(televisor: TelevisorImpl) {
-  return this.http.patch<any>(`${this.urlEndPoint2}/${televisor.getIdProducto(televisor.urlProducto)}`, televisor);
-}
-
-putTelevisor(televisor: TelevisorImpl){
-  return this.http.put<any>(`${this.urlEndPoint2}/${televisor.getIdProducto(televisor.urlProducto)}`, televisor);
+//patch
+patchTelevisor(idTelevisor: string, televisor: TelevisorImpl) {
+  return this.http.patch<any>(`${this.urlEndPoint2}/${idTelevisor}`, televisor);
 }
 
 getTelevisoresPagina(pagina: number): Observable<any> {
@@ -71,4 +70,28 @@ getId(url:string): string {
   let numId: string = url.slice(posicionFinal + 1, url.length);
   return numId;
 }
+
+// getMetodoPersonalizado(marca:string, numeroPulgadas:number): Observable<any>{
+//   this.marca=marca;
+//   this.numeroPulgadas=numeroPulgadas;
+//   return this.http.get<any>(`${this.urlMetodo}`);
+// }
+
+// Para cargar en modal
+getAlmacenTelevisor2(direccionConsulta: string){
+  this.http.get(direccionConsulta).subscribe();
 }
+
+// Para cargar en modal
+getAlmacenTelevisor3(direccionConsulta: string): Observable<any>{
+  return this.http.get(direccionConsulta);
+}
+
+// // Para cargar en modal
+// getAlmacenTelevisor(): Observable<any> {
+//   return this.http.get<any>(`${this.urlEndPoint1}/${this.getId}/almacen`);
+// }
+
+}
+
+

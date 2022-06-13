@@ -2,18 +2,18 @@ import { Almacen } from "./almacen";
 
 export class AlmacenImpl implements Almacen{
 
-  idAlmacen: number;
-  localidad: string;
-  electrodomesticos: any[];
+  idAlmacen!: string;
+  localidad!: string;
+  electrodomesticos!: any[];
+  urlAlmacen!: string;
 
-  constructor(localidad: any, idAlmacen: any, electrodomesticos: any[]){
+  constructor(localidad: any, electrodomesticos: any[], urlAlmacen: string){
     this.localidad = localidad;
-    this.idAlmacen = idAlmacen;
-    this.electrodomesticos = electrodomesticos
+    this.electrodomesticos = electrodomesticos;
+    this.urlAlmacen=urlAlmacen;
   }
   getIdAlmacen(url: string): string {
-	  url = url.slice(0, url.length - 1)
-	  return url.slice(url.lastIndexOf('/') + 1, url.length);
+	 return url.slice(url.lastIndexOf('/') + 1, url.length);
 	}
 
 }

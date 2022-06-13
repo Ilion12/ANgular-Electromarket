@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faPencil, faEye, faTrashCan, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { Electrodomestico } from 'src/app/productos/models/electrodomestico';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { Almacen } from '../models/almacen';
 import { AlmacenImpl } from '../models/almacen-impl';
@@ -14,7 +16,10 @@ export class AlmacenesComponent implements OnInit {
   almacenes: Almacen[] = [];
   todosAlmacenes: Almacen[] = [];
   numPaginas: number = 0;
-  almacenVerDatos: Almacen= new AlmacenImpl('','', []);
+  almacenVerDatos: Almacen= new AlmacenImpl('', [], '');
+  productos: Electrodomestico[]=[];
+  productoVerDatos!: Electrodomestico;
+
 
   constructor(
     private almacenService: AlmacenService,
@@ -27,6 +32,10 @@ export class AlmacenesComponent implements OnInit {
 
   verDatos(almacen: Almacen): void {
     this.almacenVerDatos = almacen;
+  }
+
+  verDatosProducto(producto:Electrodomestico): void{
+    this.productoVerDatos= producto;
   }
 
   onAlmacenEliminar(almacen: Almacen): void {
@@ -43,6 +52,10 @@ export class AlmacenesComponent implements OnInit {
           });
       }
     });
+  }
 
-}
+  pencil=faPencil;
+  eye=faEye;
+  trash=faTrashCan;
+  plus=faCirclePlus;
 }

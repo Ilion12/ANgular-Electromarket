@@ -19,21 +19,23 @@ export class LavadoraService {
     private http: HttpClient,
     private auxService: AuxiliarService) { }
 
+    //get
   getLavadoras(): Observable<any> {
     return this.http.get<any>(this.urlEndPoint1);
   }
 
   mapearLavadora(lavadoraApi: any): LavadoraImpl {
 
-    let lavadoraNueva: LavadoraImpl = new LavadoraImpl('','','','','',0,0);
+    let lavadoraNueva: LavadoraImpl = new LavadoraImpl('','','','',0,0);
+
     lavadoraNueva.almacen=lavadoraApi._links.almacen.href;
     lavadoraNueva.calificacionEnergetica=lavadoraApi.calificacionEnergetica;
     lavadoraNueva.capacidadCarga= lavadoraApi.capacidadCarga;
-    lavadoraNueva.tipoProducto= lavadoraApi.tipoProducto;
     lavadoraNueva.marca= lavadoraApi.marca;
     lavadoraNueva.modelo= lavadoraApi.modelo;
     lavadoraNueva.precio= lavadoraApi.precio;
     lavadoraNueva.urlProducto=lavadoraApi._links.self.href;
+
     return lavadoraNueva;
   }
 
@@ -45,20 +47,18 @@ export class LavadoraService {
     return lavadoras;
   }
 
+  //post
   postLavadora(lavadora: LavadoraImpl){
     this.http.post(this.urlEndPoint1, lavadora).subscribe();
   }
 
+  //delete
   deleteLavadora(direccionEliminar: string){
     this.http.delete(direccionEliminar).subscribe();
   }
-
-  patchLavadora(lavadora: LavadoraImpl) {
-    return this.http.patch<any>(`${this.urlEndPoint1}/${lavadora.getIdProducto(lavadora.urlProducto)}`, lavadora);
-  }
-
-  putLavadora(lavadora: LavadoraImpl){
-    return this.http.put<any>(`${this.urlEndPoint1}/${lavadora.getIdProducto(lavadora.urlProducto)}`, lavadora).subscribe();
+//patch
+  patchLavadora(idLavadora:string, lavadora: LavadoraImpl){
+    return this.http.put<any>(`${this.urlEndPoint1}/${idLavadora}`, lavadora);
   }
 
   getLavadorasPagina(pagina: number): Observable<any> {
@@ -69,6 +69,21 @@ export class LavadoraService {
     let numId: string = url.slice(posicionFinal + 1, url.length);
     return numId;
   }
+// Esto para botones dentro del primer modal
 
+  // Para cargar en modal
+  getAlmacenLavadora2(direccionConsulta: string){
+    this.http.get(direccionConsulta).subscribe();
+  }
+
+  // Para cargar en modal
+  getAlmacenLavadora3(direccionConsulta: string): Observable<any>{
+    return this.http.get(direccionConsulta);
+  }
+
+  // // Para cargar en modal
+  // getAlmacenLavadora(): Observable<any> {
+  //   return this.http.get<any>(`${this.urlEndPoint1}/${this.getId}/almacen`);
+  // }
 
 }

@@ -1,16 +1,18 @@
-<section id="datosLavadora">
+<section id="datosLavadora" *ngIf="[lavadora]">
   <div class="form-row py-2">
     <label>Marca<sup class="text-danger">*</sup></label>
-    <input type="text" class="form-control" [(ngModel)]="lavadora.marca" placeholder="Por ejemplo, LG" name="prod"
+    <input type="text" class="form-control" [(ngModel)]="lavadora.marca" placeholder="Por ejemplo, LG"
+     name="prod"
     required  maxlength="15"/>
     <div class="invalid-feedback">Por favor, rellene este campo.</div>
     <div class="valid-feedback">Ok</div>
   </div>
   <div class="form-row py-2">
     <label>Modelo<sup class="text-danger">*</sup></label>
-    <input type="text" class="form-control" [(ngModel)]="lavadora.modelo" placeholder="P. e., SartmWash" name="prod2"
+    <input type="text" class="form-control" [(ngModel)]="lavadora.modelo"
+     placeholder="P. e., SartmWash" name="prod2"
       required minlength="9" maxlength="9" #prod2="ngModel" [ngClass]="{
-        'is-invalid': prod2.invalid && (neg2.dirty || neg2.touched),
+        'is-invalid': prod2.invalid && (prod2.dirty || prod2.touched),
         'is-valid': !prod2.invalid
       }" />
     <div class="invalid-feedback">Por favor, rellene este campo.</div>
@@ -18,7 +20,8 @@
   </div>
     <div class="form-row py-2">
     <label>Calificación Energética<sup class="text-danger">*</sup></label>
-    <select name="selectorFormulario" id="selectorCalificaciónEnergética" class="form-select" aria-label="Default select example" [(ngModel)]="lavadora.calificacionEnergetica" placeholder="">
+    <select name="selectorFormulario" id="selectorCalificaciónEnergética" class="form-select" aria-label="Default select example"
+    [(ngModel)]="lavadora.calificacionEnergetica" placeholder="">
       <option  value="A"></option>
       <option  value="B"></option>
       <option  value="Cº"></option>
@@ -56,6 +59,6 @@
     </select>
   </div>
   <br>
-  <button class="btn btn-success" data-bs-toggle="modal" (click)="cambiarLavadora(this.lavadora)">Modificar lavadora</button>
+  <button class="btn btn-success" data-bs-toggle="modal" (click)="modificarLavadora(this.lavadora)">Editar lavadora</button>
 </section>
 
