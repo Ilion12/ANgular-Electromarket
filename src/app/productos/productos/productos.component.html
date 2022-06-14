@@ -4,23 +4,14 @@
     <div class="col-sm-4">
       <h3>Listado de productos</h3>
       <div class="d-grid gap-2" id="sumarProducto">
-        <button class="creacion btn btn-primary" type="button" routerLink="/productos/formulario-productos">
-          <fa-icon [icon]="plus"></fa-icon> Crear nuevo producto
-        </button>
+
       </div>
     </div>
     <div class="col-sm-4"></div>
   </div>
   <div class="row" id="encabezado">
 
-    <div class="col">TIPO DE PRODUCTO</div>
-    <div class="col">MARCA</div>
-    <div class="col">MODELO</div>
-    <div class="col">C. E.</div>
-    <div class="col">PRECIO</div>
-    <div class="col">TAMAÑO PANTALLA</div>
-    <div class="col">CAPACIDAD DE CARGA</div>
-    <div class="col">ALMACEN</div>
+
 
   </div>
   <div *ngIf="productos.length > 0; else noProductos">

@@ -4,11 +4,11 @@ label{
 
 
 .form-row{
-  margin-left: 35rem;
+  margin-left: 25rem;
 }
 
 #botonCancelar{
   color: white;
-  margin-left: 12rem;
+margin-left: 1rem;
   background-color: red;
 }

@@ -4,11 +4,12 @@ import { ProductosComponent } from './productos/productos.component';
 import { ProductosFormComponent } from './productos-form/productos-form.component';
 import { LavadorasComponent } from './lavadoras/lavadoras.component';
 import { TelevisoresComponent } from './televisores/televisores.component';
+import { CargarProductosComponent } from './cargar-productos/cargar-productos.component';
 
 const routes: Routes = [
   {
     path:'',
-    component: ProductosComponent,
+    component: CargarProductosComponent,
     children: [
       {
         path: 'productos',

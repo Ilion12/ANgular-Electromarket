@@ -6,7 +6,7 @@
         <label for="tipo"
           >Seleccione el tipo de producto<sup class="text-danger">*</sup>
       </label>
-      <br/>
+
         <select name="selectorFormulario" id="selector"
           class="form-select"
           aria-label="Default select example"
@@ -21,18 +21,9 @@
         </select>
       </div>
 
-      <!-- <section *ngIf="negocio.tipoNegocio == '0'">
-        <div class="form-row py-2">
-          <label>Nombre del negocio<sup class="text-danger">*</sup></label>
-          <input type="text" class="form-control" [(ngModel)]="negocio.nombre" placeholder="Por ejemplo GAFAS, S.A." name="neg"
-            required minlength="3" maxlength="25"/>
-          <div class="invalid-feedback">Por favor, rellene este campo.</div>
-          <div class="valid-feedback">¡Perfecto! ¡Ese es un nombre válido!</div>
-        </div>
-      </section> -->
-
       <section *ngIf="producto.tipoProducto == 'lavadora'">
-        //primera etiqueta
+
+        <!-- //primera etiqueta -->
         <div class="form-row py-2">
           <label>Marca<sup class="text-danger">*</sup></label>
           <input type="text" class="form-control" [(ngModel)]="lavadora.marca"
@@ -41,7 +32,7 @@
           <div class="invalid-feedback">Por favor, rellene este campo.</div>
           <div class="valid-feedback">OK</div>
         </div>
-        //segunda etiqueta
+        <!-- //segunda etiqueta -->
         <div class="form-row py-2">
           <label>Modelo<sup class="text-danger">*</sup></label>
           <input type="text" class="form-control" [(ngModel)]="lavadora.modelo"
@@ -54,49 +45,66 @@
           <div class="invalid-feedback">Por favor, rellene este campo.</div>
           <div class="valid-feedback">OK</div>
         </div>
-        //tercera etiqueta
+        <!-- //tercera etiqueta -->
         <div class="form-row py-2">
           <label>Calificación Energética<sup class="text-danger">*</sup></label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="lavadora.calificacionEnergetica"
-            placeholder="A"
-            name="prod3"
-            required
-            minlength="1"
-            maxlength="1"
-            #prod3="ngModel"
-            [ngClass]="{
-              'is-invalid': prod3.invalid && (prod3.dirty || prod3.touched),
-              'is-valid': !prod3.invalid
-            }"
-          />
-          <div class="invalid-feedback"></div>
-          <div class="valid-feedback">OK</div>
+          <select name="selectorFormulario" id="selector"
+          class="form-select"
+          aria-label="Default select example"
+          [(ngModel)]="producto.calificacionEnergetica">
+          <!-- <option value="0">Sin tipo</option> -->
+          <option value='A' name="calificaciónEnergetica" ngDefaultControl>
+            A
+          </option>
+          <option name='B' value="calificaciónEnergetica" ngDefaultControl>
+            B
+          </option>
+          <option name='C' value="calificaciónEnergetica" ngDefaultControl>
+            C
+          </option>
+          <option name='D' value="calificaciónEnergetica" ngDefaultControl>
+            D
+          </option>
+          <option name='E' value="calificaciónEnergetica" ngDefaultControl>
+            E
+          </option>
+          <option name='F' value="calificaciónEnergetica" ngDefaultControl>
+            F
+          </option>
+          <option name='G' value="calificaciónEnergetica" ngDefaultControl>
+            G
+          </option><option name='H' value="calificaciónEnergetica" ngDefaultControl>
+            H
+          </option>
+        </select>
         </div>
-        //cuarta etiqueta
+        <!-- //cuarta etiqueta -->
         <div class="form-row py-2">
           <label>Capacidad de Carga<sup class="text-danger">*</sup></label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="lavadora.capacidadCarga"
-            placeholder="6 kg"
-            name="prod4"
-            required
-            minlength="6"
-            maxlength="6"
-            #prod4="ngModel"
-            [ngClass]="{
-              'is-invalid': prod4.invalid && (prod4.dirty || prod4.touched),
-              'is-valid': !prod4.invalid
-            }"
-          />
-          <div class="invalid-feedback"></div>
-          <div class="valid-feedback">OK</div>
+          <select name="selectorFormulario" id="selector"
+          class="form-select"
+          aria-label="Default select example"
+          [(ngModel)]="producto.capacidadCarga">
+          <!-- <option value="0">Sin tipo</option> -->
+          <option value='4' name="lavadora" ngDefaultControl>
+            17"
+          </option>
+          <option name='6' value="capacidadCarga" ngDefaultControl>
+            21"
+          </option>
+          <option name='8' value="capacidadCarga" ngDefaultControl>
+            23"
+          </option>
+          <option name='10' value="capacidadCarga" ngDefaultControl>
+            29"
+          </option>
+          <option name='12' value="capacidadCarga" ngDefaultControl>
+            32"
+          </option>
+        </select>
+
         </div>
-        //quinta etiqueta
+        <!-- //quinta etiqueta -->
         <div class="form-row py-2">
           <label>Precio<sup class="text-danger">*</sup></label>
           <input
@@ -117,7 +125,7 @@
           <div class="invalid-feedback"></div>
           <div class="valid-feedback">OK</div>
         </div>
-        //sexta etiqueta
+        <!-- sexta etiqueta -->
         <div class="form-row py-2">
           <label>Seleccione el almacen<sup class="text-danger">*</sup></label><br/>
           <select
@@ -128,7 +136,7 @@
             [(ngModel)]="producto.almacen">
             <option *ngFor="let almacen of almacenes"
               value="{{ almacen.urlAlmacen }}">
-              {{ almacen.localidad}}
+              {{ almacen.localidad|uppercase}}
             </option>
           </select>
         </div>
@@ -141,7 +149,15 @@
             [disabled]="!productoForm.form.valid">
             Crear lavadora
           </button>
+          <button
+          class="btn btn-danger"
+          role="button"
+          routerLink=" "
+                  >
+          Cancelar
+        </button>
         </div>
+
       </section>
 
       <section *ngIf="producto.tipoProducto == 'televisor'">
@@ -168,8 +184,7 @@
             placeholder="Por ejemplo, vision2000"
             name="prod2"
             required
-            minlength="9"
-            maxlength="9"
+            maxlength="25"
             #prod2="ngModel"
             [ngClass]="{
               'is-invalid': prod2.invalid && (prod2.dirty || prod2.touched),
@@ -181,43 +196,75 @@
         </div>
         <div class="form-row py-2">
           <label>Calificación Energética<sup class="text-danger">*</sup></label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="televisor.calificacionEnergetica"
-            placeholder="A"
-            name="prod3"
-            required
-            minlength="1"
-            maxlength="1"
-            #prod3="ngModel"
-            [ngClass]="{
-              'is-invalid': prod3.invalid && (prod3.dirty || prod3.touched),
-              'is-valid': !prod3.invalid
-            }"
-          />
+          <select name="selectorFormulario" id="selector"
+          class="form-select"
+          aria-label="Default select example"
+          [(ngModel)]="producto.calificacionEnergetica">
+          <!-- <option value="0">Sin tipo</option> -->
+          <option value='A' name="calificaciónEnergetica" ngDefaultControl>
+            A
+          </option>
+          <option name='B' value="calificaciónEnergetica" ngDefaultControl>
+            B
+          </option>
+          <option name='C' value="calificaciónEnergetica" ngDefaultControl>
+            C
+          </option>
+          <option name='D' value="calificaciónEnergetica" ngDefaultControl>
+            D
+          </option>
+          <option name='E' value="calificaciónEnergetica" ngDefaultControl>
+            E
+          </option>
+          <option name='F' value="calificaciónEnergetica" ngDefaultControl>
+            F
+          </option>
+          <option name='G' value="calificaciónEnergetica" ngDefaultControl>
+            G
+          </option><option name='H' value="calificaciónEnergetica" ngDefaultControl>
+            H
+          </option>
+        </select>
+
           <div class="invalid-feedback"></div>
           <div class="valid-feedback">OK</div>
         </div>
         <div class="form-row py-2">
           <label>Tamaño de la Pantalla<sup class="text-danger">*</sup></label>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="televisor.numeroPulgadas"
-            placeholder='49"'
-            name="prod4"
-            required
-            minlength="2"
-            maxlength="6"
-            #prod4="ngModel"
-            [ngClass]="{
-              'is-invalid': prod4.invalid && (prod4.dirty || prod4.touched),
-              'is-valid': !prod4.invalid
-            }"
-          />
-          <div class="invalid-feedback"></div>
-          <div class="valid-feedback">OK</div>
+          <select name="selectorFormulario" id="selector"
+          class="form-select"
+          aria-label="Default select example"
+          [(ngModel)]="producto.numeroPulgadas">
+          <!-- <option value="0">Sin tipo</option> -->
+          <option value='"17"' name="lavadora" ngDefaultControl>
+            17"
+          </option>
+          <option name='21' value="numeroPulgadas" ngDefaultControl>
+            21"
+          </option>
+          <option name='23' value="numeroPulgadas" ngDefaultControl>
+            23"
+          </option>
+          <option name='29' value="numeroPulgadas" ngDefaultControl>
+            29"
+          </option>
+          <option name='32' value="numeroPulgadas" ngDefaultControl>
+            32"
+          </option>
+          <option name='43' value="numeroPulgadas" ngDefaultControl>
+            43"
+          </option>
+          <option name='49' value="numeroPulgadas" ngDefaultControl>
+            49"
+          </option><option name='55' value="numeroPulgadas" ngDefaultControl>
+            55"
+          </option><option name='65' value="numeroPulgadas" ngDefaultControl>
+            65"
+          </option><option name='75' value="numeroPulgadas" ngDefaultControl>
+            75"
+          </option>
+        </select>
+
         </div>
         <div class="form-row py-2">
           <label>Precio<sup class="text-danger">*</sup></label>
@@ -254,7 +301,7 @@
               *ngFor="let almacen of almacenes"
               value="{{ almacen.urlAlmacen }}"
             >
-              {{ almacen.localidad.toUpperCase }}
+              {{ almacen.localidad|uppercase}})
             </option>
           </select>
         </div>
@@ -267,6 +314,14 @@
             [disabled]="!productoForm.form.valid"
           >
             Crear Televisor
+          </button>
+
+          <button
+            class="btn btn-danger"
+            role="button"
+            routerLink=" "
+                    >
+            Cancelar
           </button>
         </div>
       </section>

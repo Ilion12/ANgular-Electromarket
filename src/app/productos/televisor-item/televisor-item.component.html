@@ -2,8 +2,9 @@
 
   <div class="row mb-2">
     <hr class='w-100'>
+    <div class="col-sm-3"></div>
     <div class="col-sm-4">
-      {{televisor.marca}},{{televisor.modelo}},{{televisor.calificacionEnergetica}},{{televisor.numeroPulgadas}}",
+      Televisor---{{televisor.marca}}, {{televisor.modelo}}, {{televisor.calificacionEnergetica}}, {{televisor.numeroPulgadas}}",
       {{televisor.precio}} €</div>
     <div class="col-sm-4">
       <a class="" data-bs-toggle="modal" data-bs-target="#modalTelevisor" (click)="televisorSeleccionado.emit(televisor)">

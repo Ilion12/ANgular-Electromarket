@@ -19,6 +19,7 @@ import { TelevisorModificarComponent } from './televisores/televisor-modificar/t
 import { LavadoraModificarComponent } from './lavadoras/lavadora-modificar/lavadora-modificar.component';
 import { AuxiliarService } from '../service/auxiliar.service';
 import { AlmacenesModule } from '../almacenes/almacenes.module';
+import { CargarProductosComponent } from './cargar-productos/cargar-productos.component';
 
 
 
@@ -36,7 +37,8 @@ import { AlmacenesModule } from '../almacenes/almacenes.module';
     TelevisorComponent,
     TelevisorItemComponent,
     TelevisorModificarComponent,
-    LavadoraModificarComponent],
+    LavadoraModificarComponent,
+    CargarProductosComponent],
 
   imports: [
      CommonModule,

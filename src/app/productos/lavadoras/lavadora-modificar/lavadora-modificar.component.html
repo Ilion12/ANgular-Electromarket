@@ -55,7 +55,7 @@
   <div class="form-row py-2">
     <label for="tipo">Seleccione el almacen<sup class="text-danger">*</sup></label><br>
     <select name="selectorFormulario" id="selectorAlmacen4" class="form-select" aria-label="Default select example" [(ngModel)]="lavadora.almacen" placeholder="Seleccione el almacen">
-      <option *ngFor="let almacen of almacenes" value={{almacen.urlAlmacen}}>{{almacen.localidad}}</option>
+      <option *ngFor="let almacen of almacenes" value={{almacen.urlAlmacen}}>{{almacen.localidad|uppercase}}</option>
     </select>
   </div>
   <br>

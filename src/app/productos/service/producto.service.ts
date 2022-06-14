@@ -68,11 +68,11 @@ export class ProductoService {
 
   mapearProducto(productoApi: any): ElectrodomesticoImpl {
     let producto= new ElectrodomesticoImpl('', '','','','',0,0,0);
+      producto.marca= productoApi.marca;
       producto.almacen= productoApi._links.almacen.href;
       producto.calificacionEnergetica=productoApi.calificacionEnergetica;
       producto.precio= productoApi.precio;
       producto.tipoProducto=productoApi.tipoProducto;
-      producto.marca= productoApi.marca;
       producto.modelo=productoApi.modelo;
       producto.urlProducto= productoApi._links.self.href;
       producto.capacidadCarga=productoApi.capacidadCarga;

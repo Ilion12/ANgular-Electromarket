@@ -16,7 +16,7 @@ export class AlmacenFormComponent implements OnInit {
   }
 
   create(): void {
-    this.almacenService.postAlmacen(this.almacen)
+    this.almacenService.postAlmacen(this.almacen).subscribe();
   }
 
 }

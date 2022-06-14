@@ -2,8 +2,9 @@
 
 <div class="row mb-2">
   <hr class='w-100'>
+  <div class="col-sm-4"></div>
   <div class="col-sm-4">
-    {{lavadora.marca}},{{lavadora.modelo}},{{lavadora.calificacionEnergetica}},{{lavadora.capacidadCarga}} Kg,
+    Lavadora---{{lavadora.marca}}, {{lavadora.modelo}}, {{lavadora.calificacionEnergetica}}, {{lavadora.capacidadCarga}} Kg,
     {{lavadora.precio}} €</div>
   <div class="col-sm-4">
     <a class="" data-bs-toggle="modal" data-bs-target="#modalLavadora" (click)="lavadoraSeleccionada.emit(lavadora)">
